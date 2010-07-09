@@ -94,8 +94,8 @@
 					[self createAlert:@"Failed to validate ipsw"
 								 info:[NSString stringWithFormat:@"Failed to validate \"%@\"", [tempDict objectForKey:@"file"]] 
 						setAlertStyle:NSWarningAlertStyle
-					 ]
-					;
+					 ];
+					
 					return NO;
 				}
 				sumValid = YES;
@@ -118,7 +118,37 @@
 			}
 			
 			//copy file, decrypt, save
+			NSString *grab = [@"/tmp/nspwn_ipswn" stringByAppendingString:[tempDict objectForKey:@"file"]];
+			BOOL decrypt = [tempDict objectForKey:@"decrypt"];
+			BOOL patch = [tempDict objectForKey:@"patch"];
+			
+			if (decrypt) {
+				//use xpwn-tool to decrypt using iv & key
+			}
+			
+			if (patch) {
+				//use bspatch on the ipsw
+			}
 		}
+	}
+	
+	sumValid = NO;
+	extracted = NO;
+	
+	//remove file
+	NSError *error;
+	if (! [fileManager removeItemAtPath:@"/tmp/nspwn_ipsw" error:&error]) {
+		NSLog(@"Failed to remove \"/tmp/nspwn_ipsw\" error: %@", error);
+		[self createAlert:@"Failed to remove temp files"
+					 info:@"Failed to remove the \"/tmp/nspwn_ipsw\""
+			setAlertStyle:NSWarningAlertStyle
+		 ];
+		
+		return NO;
+	}
+	
+	for (NSDictionary *tempDict in [OS3 objectForKey:@"required"]) {
+		//handle OS4 firmware
 	}
 	
 	return YES;
