@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1797AA0E11E7E5EC008C3CF8 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1797AA0D11E7E5EC008C3CF8 /* IOKit.framework */; };
-		1797AABB11E7E685008C3CF8 /* iDeviceUtil.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1797AABA11E7E685008C3CF8 /* iDeviceUtil.framework */; };
 		2A45670411E7CFA70087C752 /* PAddons.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A45670111E7CFA70087C752 /* PAddons.m */; };
 		2A45670511E7CFA70087C752 /* PController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A45670311E7CFA70087C752 /* PController.m */; };
 		2A45670E11E7CFBD0087C752 /* Devices.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2A45670711E7CFBD0087C752 /* Devices.plist */; };
@@ -27,7 +26,6 @@
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 		1797AA0D11E7E5EC008C3CF8 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
-		1797AABA11E7E685008C3CF8 /* iDeviceUtil.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iDeviceUtil.framework; path = Frameworks/iDeviceUtil.framework; sourceTree = "<group>"; };
 		256AC3F00F4B6AF500CF3369 /* Pneumonia_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pneumonia_Prefix.pch; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
@@ -56,7 +54,6 @@
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				2A9AF86911E6E628003A0174 /* libcrypto.dylib in Frameworks */,
 				1797AA0E11E7E5EC008C3CF8 /* IOKit.framework in Frameworks */,
-				1797AABB11E7E685008C3CF8 /* iDeviceUtil.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,7 +76,6 @@
 				13E42FB307B3F0F600E4EEF1 /* CoreData.framework */,
 				29B97325FDCFA39411CA2CEA /* Foundation.framework */,
 				1797AA0D11E7E5EC008C3CF8 /* IOKit.framework */,
-				1797AABA11E7E685008C3CF8 /* iDeviceUtil.framework */,
 			);
 			name = "Other Frameworks";
 			sourceTree = "<group>";
