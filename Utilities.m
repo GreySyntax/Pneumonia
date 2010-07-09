@@ -7,7 +7,7 @@
 //
 
 #import "Utilities.h"
-
+#import "ZipArchive.h"
 
 @implementation Utilities
 
@@ -67,16 +67,16 @@
 
 + (BOOL) unzip:(NSString *)path toPath:(NSString *)topath {
 
-	ZipArchive *unzip = [[ZipArchive alloc] init];
+	ZipArchive *e= [[ZipArchive alloc] init];
 	
-	if([unzip UnzipOpenFile:path]) {
+	if([e UnzipOpenFile:path]) {
 		
-		if ( ![unzip UnzipFileTo:topath overWrite:YES]) {
+		if ( ![e UnzipFileTo:topath overWrite:YES]) {
 			
 			NSLog(@"Error extracting.");
 			
-			[unzip UnzipCloseFile];
-			[unzip release];
+			[e UnzipCloseFile];
+			[e release];
 			
 			NSLog(@"Failed to unzip: %@", path);
 			NSLog(@"to:	%@", topath);
@@ -84,8 +84,8 @@
 		}
 	}
 	
-	[unzip  UnzipCloseFile];
-	[unzip release];
+	[e  UnzipCloseFile];
+	[e release];
 	return YES;
 }
 

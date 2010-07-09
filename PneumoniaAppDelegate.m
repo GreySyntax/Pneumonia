@@ -72,7 +72,7 @@
 				
 				NSLog(@"Failed to locate required file, attempting to generate.");
 				
-				BOOL package = [fileManager isReadableFileAtPath:[documents stringByAppendingString:[OS3 objectForKey:@"file"]]];
+				BOOL package = [fileManager isReadableFileAtPath:[documents stringByAppendingString:[bundleDict objectForKey:@"file"]]];
 				if (! package) {
 					NSLog(@"Failed to locate firmware bundle");
 					
@@ -89,7 +89,7 @@
 				if (! sumValid) {
 					BOOL shouldMatch = [OS3 valueForKey:@"md5_validates"];
 					NSString *expected = [OS3 objectForKey:@"md5_sum"];
-					NSString *actual = [Utilities fileMD5:[documents stringByAppendingString:[OS3 objectForKey:@"file"]]];
+					NSString *actual = [Utilities fileMD5:[documents stringByAppendingString:[bundleDict objectForKey:@"file"]]];
 					
 					if ((expected == actual) == shouldMatch) {
 						
@@ -107,10 +107,10 @@
 				}
 				//extract to /tmp/nspwn_ipsw
 				if (! extracted) {
-					if (! [Utilities unzip:[documents stringByAppendingString:[OS3 objectForKey:@"file"]] toPath:@"/tmp/nspwn_ipsw"]) {
+					if (! [Utilities unzip:[documents stringByAppendingString:[bundleDict objectForKey:@"file"]] toPath:@"/tmp/nspwn_ipsw"]) {
 						
 						[self createAlert:@"Failed to extract ipsw"
-									 info:[NSString stringWithFormat:@"Failed to extract \"%@\"", [documents stringByAppendingString:[OS3 objectForKey:@"file"]]]
+									 info:[NSString stringWithFormat:@"Failed to extract \"%@\"", [documents stringByAppendingString:[bundleDict objectForKey:@"file"]]]
 							setAlertStyle:NSWarningAlertStyle
 						 ];
 						
