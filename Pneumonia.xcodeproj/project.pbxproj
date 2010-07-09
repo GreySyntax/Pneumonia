@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		174778EC11E7408E00D7F46B /* ibootutil.c in Sources */ = {isa = PBXBuildFile; fileRef = 174778EA11E7408E00D7F46B /* ibootutil.c */; };
+		174778F811E740BE00D7F46B /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 174778F711E740BE00D7F46B /* IOKit.framework */; };
 		1767C8FF11E633CD00075E6B /* iphone_sn0w.png in Resources */ = {isa = PBXBuildFile; fileRef = 1767C8FE11E633CD00075E6B /* iphone_sn0w.png */; };
 		1767C9D011E6433900075E6B /* Bundles.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1767C9CF11E6433900075E6B /* Bundles.plist */; };
 		1767CA0C11E64AFC00075E6B /* gray-apple-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1767CA0A11E64AFC00075E6B /* gray-apple-icon.png */; };
@@ -15,7 +17,6 @@
 		17D7CDDE11E67B2A00CBB60A /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D7CDDD11E67B2A00CBB60A /* Utilities.m */; };
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
 		256AC3DA0F4B6AC300CF3369 /* PneumoniaAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* PneumoniaAppDelegate.m */; };
-		2A9AF86911E6E628003A0174 /* libcrypto.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A9AF86811E6E628003A0174 /* libcrypto.dylib */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -25,6 +26,9 @@
 		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
+		174778EA11E7408E00D7F46B /* ibootutil.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ibootutil.c; sourceTree = "<group>"; };
+		174778EB11E7408E00D7F46B /* ibootutil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ibootutil.h; sourceTree = "<group>"; };
+		174778F711E740BE00D7F46B /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
 		1767C8FE11E633CD00075E6B /* iphone_sn0w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iphone_sn0w.png; sourceTree = "<group>"; };
 		1767C9CF11E6433900075E6B /* Bundles.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Bundles.plist; sourceTree = "<group>"; };
 		1767CA0A11E64AFC00075E6B /* gray-apple-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gray-apple-icon.png"; sourceTree = "<group>"; };
@@ -39,7 +43,6 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
-		2A9AF86811E6E628003A0174 /* libcrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.dylib; path = usr/lib/libcrypto.dylib; sourceTree = SDKROOT; };
 		8D1107310486CEB800E47090 /* Pneumonia-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Pneumonia-Info.plist"; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Pneumonia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pneumonia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -50,7 +53,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
-				2A9AF86911E6E628003A0174 /* libcrypto.dylib in Frameworks */,
+				174778F811E740BE00D7F46B /* IOKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,6 +63,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				174778EA11E7408E00D7F46B /* ibootutil.c */,
+				174778EB11E7408E00D7F46B /* ibootutil.h */,
 				256AC3D80F4B6AC300CF3369 /* PneumoniaAppDelegate.h */,
 				256AC3D90F4B6AC300CF3369 /* PneumoniaAppDelegate.m */,
 				17D7CDDC11E67B2A00CBB60A /* Utilities.h */,
@@ -72,7 +77,6 @@
 			isa = PBXGroup;
 			children = (
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
-				2A9AF86811E6E628003A0174 /* libcrypto.dylib */,
 			);
 			name = "Linked Frameworks";
 			sourceTree = "<group>";
@@ -83,6 +87,7 @@
 				29B97324FDCFA39411CA2CEA /* AppKit.framework */,
 				13E42FB307B3F0F600E4EEF1 /* CoreData.framework */,
 				29B97325FDCFA39411CA2CEA /* Foundation.framework */,
+				174778F711E740BE00D7F46B /* IOKit.framework */,
 			);
 			name = "Other Frameworks";
 			sourceTree = "<group>";
@@ -206,6 +211,7 @@
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				256AC3DA0F4B6AC300CF3369 /* PneumoniaAppDelegate.m in Sources */,
 				17D7CDDE11E67B2A00CBB60A /* Utilities.m in Sources */,
+				174778EC11E7408E00D7F46B /* ibootutil.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

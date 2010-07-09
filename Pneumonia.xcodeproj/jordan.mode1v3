@@ -268,14 +268,15 @@
 								<string>29B97315FDCFA39411CA2CEA</string>
 								<string>29B97317FDCFA39411CA2CEA</string>
 								<string>29B97323FDCFA39411CA2CEA</string>
+								<string>1058C7A0FEA54F0111CA2CBB</string>
 								<string>1058C7A2FEA54F0111CA2CBB</string>
 								<string>1C37FABC05509CD000000102</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>5</integer>
-									<integer>1</integer>
+									<integer>23</integer>
+									<integer>20</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -317,7 +318,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>Utilities.m</string>
+								<string>irecovery.c</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -325,14 +326,13 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>Utilities.m</string>
+										<string>irecovery.c</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>17A2BB7E11E73EA800470FAD</string>
+										<string>1747791411E7411400D7F46B</string>
 										<key>history</key>
 										<array>
-											<string>1767CB0511E665C200075E6B</string>
 											<string>1767CB6C11E6705100075E6B</string>
 											<string>1767CB7911E6778E00075E6B</string>
 											<string>1767CB7A11E6778E00075E6B</string>
@@ -346,7 +346,9 @@
 											<string>17A2BB6911E73BF500470FAD</string>
 											<string>17A2BB7111E73DDF00470FAD</string>
 											<string>17A2BB7211E73DDF00470FAD</string>
-											<string>17A2BB7D11E73EA800470FAD</string>
+											<string>174778FF11E740DB00D7F46B</string>
+											<string>1747791111E7411400D7F46B</string>
+											<string>1747791211E7411400D7F46B</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -404,9 +406,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>17A2BB1811E7362400470FAD</string>
+				<string>174778E711E7408100D7F46B</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>17A2BB1911E7362400470FAD</string>
+				<string>174778E811E7408100D7F46B</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -544,13 +546,8 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>17A2BB7F11E73EA800470FAD</string>
-		<string>17A2BB2611E7372000470FAD</string>
-		<string>17A2BB2711E7372000470FAD</string>
-		<string>1CD10A99069EF8BA00B06720</string>
 		<string>1737BAED11E5159C00014917</string>
-		<string>1C78EAAD065D492600B07095</string>
-		<string>/Users/jordan/Downloads/GreySyntax-Pneumonia-c363fad/Pneumonia.xcodeproj</string>
+		<string>/Users/jordan/Desktop/Pneumonia/Pneumonia.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>67 55 1213 723 0 0 1280 778 </string>
@@ -574,7 +571,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>PneumoniaAppDelegate.m</string>
+								<string></string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -591,8 +588,6 @@
 							<string>205pt</string>
 						</dict>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -632,7 +627,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1737BAED11E5159C00014917</string>
-				<string>17A2BB1A11E7362400470FAD</string>
+				<string>174778E911E7408100D7F46B</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>

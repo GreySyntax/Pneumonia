@@ -8,10 +8,15 @@
 
 #define RECOVERY 0x1281
 #define DFU 0x1227
+#define VENDOR_ID 0x05AC
 
 #define REQUEST_COMMAND 0x40
 #define REQUEST_FILE 0x21
 #define REQUEST_STATUS 0xA1
+
+enum {
+	kAppleVendorID		= 0x05AC
+};
 
 static int verbosity = 0, timeout=1000;
 #define ibootutil_printf(...) { \
