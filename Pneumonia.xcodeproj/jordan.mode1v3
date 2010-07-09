@@ -275,8 +275,8 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>23</integer>
-									<integer>20</integer>
+									<integer>2</integer>
+									<integer>1</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -318,7 +318,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>irecovery.c</string>
+								<string>ibootutil.c</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -326,11 +326,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>irecovery.c</string>
+										<string>ibootutil.c</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>1747791411E7411400D7F46B</string>
+										<string>1795233A11E74DC9004E78AC</string>
 										<key>history</key>
 										<array>
 											<string>1767CB6C11E6705100075E6B</string>
@@ -347,8 +347,8 @@
 											<string>17A2BB7111E73DDF00470FAD</string>
 											<string>17A2BB7211E73DDF00470FAD</string>
 											<string>174778FF11E740DB00D7F46B</string>
-											<string>1747791111E7411400D7F46B</string>
-											<string>1747791211E7411400D7F46B</string>
+											<string>1747792D11E7425B00D7F46B</string>
+											<string>1795233911E74DC9004E78AC</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -406,9 +406,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>174778E711E7408100D7F46B</string>
+				<string>1795233B11E74DC9004E78AC</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>174778E811E7408100D7F46B</string>
+				<string>1795233C11E74DC9004E78AC</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -571,7 +571,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string></string>
+								<string>ibootutil.c</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -588,6 +588,8 @@
 							<string>205pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -627,7 +629,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1737BAED11E5159C00014917</string>
-				<string>174778E911E7408100D7F46B</string>
+				<string>1795233811E74DC5004E78AC</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -749,13 +751,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>17A2BB1E11E7372000470FAD</string>
+				<string>1747793311E7425B00D7F46B</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>17A2BB1F11E7372000470FAD</string>
-				<string>17A2BB2011E7372000470FAD</string>
-				<string>17A2BB2111E7372000470FAD</string>
-				<string>17A2BB2211E7372000470FAD</string>
-				<string>17A2BB2311E7372000470FAD</string>
+				<string>1747793411E7425B00D7F46B</string>
+				<string>1747793511E7425B00D7F46B</string>
+				<string>1747793611E7425B00D7F46B</string>
+				<string>1747793711E7425B00D7F46B</string>
+				<string>1747793811E7425B00D7F46B</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>

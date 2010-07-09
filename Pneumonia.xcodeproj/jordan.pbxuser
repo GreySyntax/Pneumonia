@@ -26,9 +26,9 @@
 	};
 	174778EA11E7408E00D7F46B /* ibootutil.c */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {971, 5005}}";
-			sepNavSelRange = "{683, 0}";
-			sepNavVisRange = "{342, 1415}";
+			sepNavIntBoundsRect = "{{0, 0}, {985, 4940}}";
+			sepNavSelRange = "{4582, 0}";
+			sepNavVisRange = "{3951, 1921}";
 		};
 	};
 	174778FF11E740DB00D7F46B /* PBXTextBookmark */ = {
@@ -41,51 +41,22 @@
 		vrLen = 1449;
 		vrLoc = 0;
 	};
-	1747791111E7411400D7F46B /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 174778EA11E7408E00D7F46B /* ibootutil.c */;
-		name = "ibootutil.c: 29";
-		rLen = 0;
-		rLoc = 708;
-		rType = 0;
-		vrLen = 1415;
-		vrLoc = 342;
-	};
-	1747791211E7411400D7F46B /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 1747791311E7411400D7F46B /* irecovery.c */;
-		rLen = 0;
-		rLoc = 9223372036854775808;
-		rType = 0;
-	};
-	1747791311E7411400D7F46B /* irecovery.c */ = {
-		isa = PBXFileReference;
-		lastKnownFileType = sourcecode.c.c;
-		name = irecovery.c;
-		path = /Users/jordan/Desktop/irecovery/irecovery.c;
-		sourceTree = "<absolute>";
-	};
-	1747791411E7411400D7F46B /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 1747791511E7411400D7F46B /* irecovery.c */;
-		name = "irecovery.c: 32";
-		rLen = 6;
-		rLoc = 1037;
-		rType = 0;
-		vrLen = 1583;
-		vrLoc = 0;
-	};
 	1747791511E7411400D7F46B /* irecovery.c */ = {
 		isa = PBXFileReference;
 		lastKnownFileType = sourcecode.c.c;
 		name = irecovery.c;
 		path = /Users/jordan/Desktop/irecovery/irecovery.c;
 		sourceTree = "<absolute>";
-		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {945, 8359}}";
-			sepNavSelRange = "{1008, 35}";
-			sepNavVisRange = "{0, 1583}";
-		};
+	};
+	1747792D11E7425B00D7F46B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1747791511E7411400D7F46B /* irecovery.c */;
+		name = "irecovery.c: 32";
+		rLen = 35;
+		rLoc = 1008;
+		rType = 0;
+		vrLen = 1583;
+		vrLoc = 0;
 	};
 	1767C8DC11E631A700075E6B /* Pneumonia */ = {
 		isa = PBXExecutable;
@@ -183,6 +154,25 @@
 	1767CB7C11E6778E00075E6B /* PBXBookmark */ = {
 		isa = PBXBookmark;
 		fRef = 1767CA0B11E64AFC00075E6B /* Pneumonia.icns */;
+	};
+	1795233911E74DC9004E78AC /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Syntax error before 'kUSBProductString'";
+		fRef = 174778EA11E7408E00D7F46B /* ibootutil.c */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 166;
+		rType = 1;
+	};
+	1795233A11E74DC9004E78AC /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 174778EA11E7408E00D7F46B /* ibootutil.c */;
+		name = "ibootutil.c: 167";
+		rLen = 0;
+		rLoc = 4582;
+		rType = 0;
+		vrLen = 1869;
+		vrLoc = 3951;
 	};
 	17A2BB0C11E735EA00470FAD /* setautoboot.c */ = {
 		isa = PBXFileReference;
@@ -395,27 +385,27 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 300368154;
-			PBXWorkspaceStateSaveDate = 300368154;
+			PBXPerProjectTemplateStateSaveDate = 300371375;
+			PBXWorkspaceStateSaveDate = 300371375;
 		};
 		perUserProjectItems = {
-			1720156611E6B095008C66E1 = 1720156611E6B095008C66E1 /* PlistBookmark */;
-			1720156711E6B095008C66E1 = 1720156711E6B095008C66E1 /* PBXTextBookmark */;
-			1720158611E6B209008C66E1 = 1720158611E6B209008C66E1 /* PBXBookmark */;
-			174778FF11E740DB00D7F46B = 174778FF11E740DB00D7F46B /* PBXTextBookmark */;
-			1747791111E7411400D7F46B = 1747791111E7411400D7F46B /* PBXTextBookmark */;
-			1747791211E7411400D7F46B = 1747791211E7411400D7F46B /* PBXTextBookmark */;
-			1747791411E7411400D7F46B = 1747791411E7411400D7F46B /* PBXTextBookmark */;
-			1767CB6C11E6705100075E6B = 1767CB6C11E6705100075E6B /* PBXTextBookmark */;
-			1767CB7911E6778E00075E6B = 1767CB7911E6778E00075E6B /* PBXBookmark */;
-			1767CB7A11E6778E00075E6B = 1767CB7A11E6778E00075E6B /* PBXBookmark */;
-			1767CB7B11E6778E00075E6B = 1767CB7B11E6778E00075E6B /* PlistBookmark */;
-			1767CB7C11E6778E00075E6B = 1767CB7C11E6778E00075E6B /* PBXBookmark */;
-			17A2BB1611E7362400470FAD = 17A2BB1611E7362400470FAD /* PBXTextBookmark */;
-			17A2BB6911E73BF500470FAD = 17A2BB6911E73BF500470FAD /* PBXTextBookmark */;
-			17A2BB7111E73DDF00470FAD = 17A2BB7111E73DDF00470FAD /* PBXTextBookmark */;
-			17A2BB7211E73DDF00470FAD = 17A2BB7211E73DDF00470FAD /* PBXTextBookmark */;
-			17D7CF2411E6904E00CBB60A = 17D7CF2411E6904E00CBB60A /* PBXTextBookmark */;
+			1720156611E6B095008C66E1 /* PlistBookmark */ = 1720156611E6B095008C66E1 /* PlistBookmark */;
+			1720156711E6B095008C66E1 /* PBXTextBookmark */ = 1720156711E6B095008C66E1 /* PBXTextBookmark */;
+			1720158611E6B209008C66E1 /* PBXBookmark */ = 1720158611E6B209008C66E1 /* PBXBookmark */;
+			174778FF11E740DB00D7F46B /* PBXTextBookmark */ = 174778FF11E740DB00D7F46B /* PBXTextBookmark */;
+			1747792D11E7425B00D7F46B /* PBXTextBookmark */ = 1747792D11E7425B00D7F46B /* PBXTextBookmark */;
+			1767CB6C11E6705100075E6B /* PBXTextBookmark */ = 1767CB6C11E6705100075E6B /* PBXTextBookmark */;
+			1767CB7911E6778E00075E6B /* PBXBookmark */ = 1767CB7911E6778E00075E6B /* PBXBookmark */;
+			1767CB7A11E6778E00075E6B /* PBXBookmark */ = 1767CB7A11E6778E00075E6B /* PBXBookmark */;
+			1767CB7B11E6778E00075E6B /* PlistBookmark */ = 1767CB7B11E6778E00075E6B /* PlistBookmark */;
+			1767CB7C11E6778E00075E6B /* PBXBookmark */ = 1767CB7C11E6778E00075E6B /* PBXBookmark */;
+			1795233911E74DC9004E78AC /* XCBuildMessageTextBookmark */ = 1795233911E74DC9004E78AC /* XCBuildMessageTextBookmark */;
+			1795233A11E74DC9004E78AC /* PBXTextBookmark */ = 1795233A11E74DC9004E78AC /* PBXTextBookmark */;
+			17A2BB1611E7362400470FAD /* PBXTextBookmark */ = 17A2BB1611E7362400470FAD /* PBXTextBookmark */;
+			17A2BB6911E73BF500470FAD /* PBXTextBookmark */ = 17A2BB6911E73BF500470FAD /* PBXTextBookmark */;
+			17A2BB7111E73DDF00470FAD /* PBXTextBookmark */ = 17A2BB7111E73DDF00470FAD /* PBXTextBookmark */;
+			17A2BB7211E73DDF00470FAD /* PBXTextBookmark */ = 17A2BB7211E73DDF00470FAD /* PBXTextBookmark */;
+			17D7CF2411E6904E00CBB60A /* PBXTextBookmark */ = 17D7CF2411E6904E00CBB60A /* PBXTextBookmark */;
 		};
 		sourceControlManager = 1767C8E211E631C600075E6B /* Source Control */;
 		userBuildSettings = {
