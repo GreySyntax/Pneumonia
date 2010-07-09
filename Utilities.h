@@ -7,15 +7,16 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import <CommonCrypto/CommonDigest.h>
 
 @interface Utilities : NSObject {
 	
 }
 
 //generates md5 hash from a string
-+ (NSString *) returnMD5Hash:(NSString*)concat;
-+ (NSString *) fileMD5:(NSString *)path;
-+ (BOOL) unzip:(NSString *)path toPath:(NSString *)topath;
-
++ (NSString *)returnMD5Hash:(NSString*)concat;
++ (NSString *)fileMD5:(NSString *)path;
++ (BOOL)unzip:(NSString *)path toPath:(NSString *)toPath;
++ (BOOL)xpwnDecrypt:(NSString *)file toPath:(NSString *)toPath key:(NSString *)key iv:(NSString *)iv;
++ (void)createAlert:(NSString *)message info:(NSString *)info;
++ (void)buttonDidEnd:(NSAlert *)alert returnCode:(int)returnCode contextInfo:(void *)contextInfo;
 @end

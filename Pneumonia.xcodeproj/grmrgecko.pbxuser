@@ -1,0 +1,172 @@
+// !$*UTF8*$!
+{
+	1767C9CF11E6433900075E6B /* Bundles.plist */ = {
+		uiCtxt = {
+			sepNavWindowFrame = "{{0, 4}, {1280, 774}}";
+		};
+	};
+	17D7CDDC11E67B2A00CBB60A /* Utilities.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1221, 646}}";
+			sepNavSelRange = "{151, 0}";
+			sepNavVisRange = "{0, 377}";
+			sepNavWindowFrame = "{{0, 4}, {1280, 774}}";
+		};
+	};
+	17D7CDDD11E67B2A00CBB60A /* Utilities.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1221, 988}}";
+			sepNavSelRange = "{1266, 0}";
+			sepNavVisRange = "{619, 1378}";
+			sepNavWindowFrame = "{{0, 4}, {1280, 774}}";
+		};
+	};
+	256AC3D80F4B6AC300CF3369 /* PneumoniaAppDelegate.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1221, 646}}";
+			sepNavSelRange = "{280, 0}";
+			sepNavVisRange = "{0, 924}";
+			sepNavWindowFrame = "{{0, 4}, {1280, 774}}";
+		};
+	};
+	256AC3D90F4B6AC300CF3369 /* PneumoniaAppDelegate.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1692, 2236}}";
+			sepNavSelRange = "{4507, 0}";
+			sepNavVisRange = "{3628, 1489}";
+			sepNavWindowFrame = "{{0, 4}, {1280, 774}}";
+		};
+	};
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = 2A9AF78E11E6BDD1003A0174 /* Pneumonia */;
+		activeTarget = 8D1107260486CEB800E47090 /* Pneumonia */;
+		breakpoints = (
+		);
+		codeSenseManager = 2A9AF79911E6BDF6003A0174 /* Code sense */;
+		executables = (
+			2A9AF78E11E6BDD1003A0174 /* Pneumonia */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					364,
+					20,
+					48.16259765625,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 300334546;
+			PBXWorkspaceStateSaveDate = 300334546;
+		};
+		perUserProjectItems = {
+			2A9AF7E011E6CE55003A0174 /* PBXBookmark */ = 2A9AF7E011E6CE55003A0174 /* PBXBookmark */;
+			2A9AF84E11E6E533003A0174 /* XCBuildMessageTextBookmark */ = 2A9AF84E11E6E533003A0174 /* XCBuildMessageTextBookmark */;
+			2A9AF87D11E6E81E003A0174 /* PBXTextBookmark */ = 2A9AF87D11E6E81E003A0174 /* PBXTextBookmark */;
+			2A9AF87E11E6E81E003A0174 /* PlistBookmark */ = 2A9AF87E11E6E81E003A0174 /* PlistBookmark */;
+		};
+		sourceControlManager = 2A9AF79811E6BDF6003A0174 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	2A9AF78E11E6BDD1003A0174 /* Pneumonia */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 1;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = Pneumonia;
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+	};
+	2A9AF79811E6BDF6003A0174 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	2A9AF79911E6BDF6003A0174 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	2A9AF7E011E6CE55003A0174 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 1767C9CF11E6433900075E6B /* Bundles.plist */;
+	};
+	2A9AF84E11E6E533003A0174 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'NSFileManager' may not respond to '-removeItemAtPath:error:'";
+		fRef = 256AC3D90F4B6AC300CF3369 /* PneumoniaAppDelegate.m */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 133;
+		rType = 1;
+	};
+	2A9AF87D11E6E81E003A0174 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 256AC3D90F4B6AC300CF3369 /* PneumoniaAppDelegate.m */;
+		name = "PneumoniaAppDelegate.m: 122";
+		rLen = 0;
+		rLoc = 4507;
+		rType = 0;
+		vrLen = 1489;
+		vrLoc = 3628;
+	};
+	2A9AF87E11E6E81E003A0174 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 1767C9CF11E6433900075E6B /* Bundles.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+			"iPhone2,1",
+			8A293,
+			required,
+			0,
+			target,
+		);
+		name = "/Users/grmrgecko/Downloads/GreySyntax-Pneumonia-c363fad/Bundles.plist";
+		rLen = 0;
+		rLoc = 2147483647;
+	};
+	8D1107260486CEB800E47090 /* Pneumonia */ = {
+		activeExec = 0;
+		executables = (
+			2A9AF78E11E6BDD1003A0174 /* Pneumonia */,
+		);
+	};
+}

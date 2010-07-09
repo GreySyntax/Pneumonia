@@ -7,22 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1711F69211E6C32A000C6606 /* ibootutil.c in Sources */ = {isa = PBXBuildFile; fileRef = 1711F69111E6C32A000C6606 /* ibootutil.c */; };
-		1711F69A11E6C355000C6606 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1711F69911E6C355000C6606 /* IOKit.framework */; };
 		1767C8FF11E633CD00075E6B /* iphone_sn0w.png in Resources */ = {isa = PBXBuildFile; fileRef = 1767C8FE11E633CD00075E6B /* iphone_sn0w.png */; };
 		1767C9D011E6433900075E6B /* Bundles.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1767C9CF11E6433900075E6B /* Bundles.plist */; };
-		1767CA0311E64AEC00075E6B /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 1767C9F911E64AEC00075E6B /* ioapi.c */; };
-		1767CA0411E64AEC00075E6B /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 1767C9FB11E64AEC00075E6B /* mztools.c */; };
-		1767CA0511E64AEC00075E6B /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 1767C9FD11E64AEC00075E6B /* unzip.c */; };
-		1767CA0611E64AEC00075E6B /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 1767C9FF11E64AEC00075E6B /* zip.c */; };
-		1767CA0711E64AEC00075E6B /* ZipArchive.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1767CA0211E64AEC00075E6B /* ZipArchive.mm */; };
 		1767CA0C11E64AFC00075E6B /* gray-apple-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1767CA0A11E64AFC00075E6B /* gray-apple-icon.png */; };
 		1767CA0D11E64AFC00075E6B /* Pneumonia.icns in Resources */ = {isa = PBXBuildFile; fileRef = 1767CA0B11E64AFC00075E6B /* Pneumonia.icns */; };
-		1767CA1311E64B4F00075E6B /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1767CA1211E64B4F00075E6B /* libz.1.2.3.dylib */; };
-		1767CB9311E678FA00075E6B /* libcrypto.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1767CB9211E678FA00075E6B /* libcrypto.dylib */; };
+		17A2BAE111E7326E00470FAD /* xpwntool in Resources */ = {isa = PBXBuildFile; fileRef = 17A2BAE011E7326E00470FAD /* xpwntool */; };
 		17D7CDDE11E67B2A00CBB60A /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D7CDDD11E67B2A00CBB60A /* Utilities.m */; };
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
 		256AC3DA0F4B6AC300CF3369 /* PneumoniaAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* PneumoniaAppDelegate.m */; };
+		2A9AF86911E6E628003A0174 /* libcrypto.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A9AF86811E6E628003A0174 /* libcrypto.dylib */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -32,26 +25,11 @@
 		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
-		1711F69011E6C32A000C6606 /* ibootutil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ibootutil.h; sourceTree = "<group>"; };
-		1711F69111E6C32A000C6606 /* ibootutil.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ibootutil.c; sourceTree = "<group>"; };
-		1711F69911E6C355000C6606 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		1767C8FE11E633CD00075E6B /* iphone_sn0w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iphone_sn0w.png; sourceTree = "<group>"; };
 		1767C9CF11E6433900075E6B /* Bundles.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Bundles.plist; sourceTree = "<group>"; };
-		1767C9F811E64AEC00075E6B /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
-		1767C9F911E64AEC00075E6B /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
-		1767C9FA11E64AEC00075E6B /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
-		1767C9FB11E64AEC00075E6B /* mztools.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mztools.c; sourceTree = "<group>"; };
-		1767C9FC11E64AEC00075E6B /* mztools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mztools.h; sourceTree = "<group>"; };
-		1767C9FD11E64AEC00075E6B /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unzip.c; sourceTree = "<group>"; };
-		1767C9FE11E64AEC00075E6B /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
-		1767C9FF11E64AEC00075E6B /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
-		1767CA0011E64AEC00075E6B /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
-		1767CA0111E64AEC00075E6B /* ZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipArchive.h; sourceTree = "<group>"; };
-		1767CA0211E64AEC00075E6B /* ZipArchive.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ZipArchive.mm; sourceTree = "<group>"; };
 		1767CA0A11E64AFC00075E6B /* gray-apple-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gray-apple-icon.png"; sourceTree = "<group>"; };
 		1767CA0B11E64AFC00075E6B /* Pneumonia.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Pneumonia.icns; sourceTree = "<group>"; };
-		1767CA1211E64B4F00075E6B /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
-		1767CB9211E678FA00075E6B /* libcrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.dylib; path = usr/lib/libcrypto.dylib; sourceTree = SDKROOT; };
+		17A2BAE011E7326E00470FAD /* xpwntool */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = xpwntool; sourceTree = "<group>"; };
 		17D7CDDC11E67B2A00CBB60A /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
 		17D7CDDD11E67B2A00CBB60A /* Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
 		1DDD58150DA1D0A300B32029 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -61,6 +39,7 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		2A9AF86811E6E628003A0174 /* libcrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.dylib; path = usr/lib/libcrypto.dylib; sourceTree = SDKROOT; };
 		8D1107310486CEB800E47090 /* Pneumonia-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Pneumonia-Info.plist"; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Pneumonia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pneumonia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -71,9 +50,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
-				1767CA1311E64B4F00075E6B /* libz.1.2.3.dylib in Frameworks */,
-				1767CB9311E678FA00075E6B /* libcrypto.dylib in Frameworks */,
-				1711F69A11E6C355000C6606 /* IOKit.framework in Frameworks */,
+				2A9AF86911E6E628003A0174 /* libcrypto.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,13 +60,10 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				1767C9F611E64AEC00075E6B /* ZipArchive */,
 				256AC3D80F4B6AC300CF3369 /* PneumoniaAppDelegate.h */,
 				256AC3D90F4B6AC300CF3369 /* PneumoniaAppDelegate.m */,
 				17D7CDDC11E67B2A00CBB60A /* Utilities.h */,
 				17D7CDDD11E67B2A00CBB60A /* Utilities.m */,
-				1711F69011E6C32A000C6606 /* ibootutil.h */,
-				1711F69111E6C32A000C6606 /* ibootutil.c */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -98,6 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
+				2A9AF86811E6E628003A0174 /* libcrypto.dylib */,
 			);
 			name = "Linked Frameworks";
 			sourceTree = "<group>";
@@ -105,40 +80,11 @@
 		1058C7A2FEA54F0111CA2CBB /* Other Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1767CA1211E64B4F00075E6B /* libz.1.2.3.dylib */,
 				29B97324FDCFA39411CA2CEA /* AppKit.framework */,
 				13E42FB307B3F0F600E4EEF1 /* CoreData.framework */,
 				29B97325FDCFA39411CA2CEA /* Foundation.framework */,
-				1767CB9211E678FA00075E6B /* libcrypto.dylib */,
-				1711F69911E6C355000C6606 /* IOKit.framework */,
 			);
 			name = "Other Frameworks";
-			sourceTree = "<group>";
-		};
-		1767C9F611E64AEC00075E6B /* ZipArchive */ = {
-			isa = PBXGroup;
-			children = (
-				1767C9F711E64AEC00075E6B /* minizip */,
-				1767CA0111E64AEC00075E6B /* ZipArchive.h */,
-				1767CA0211E64AEC00075E6B /* ZipArchive.mm */,
-			);
-			path = ZipArchive;
-			sourceTree = "<group>";
-		};
-		1767C9F711E64AEC00075E6B /* minizip */ = {
-			isa = PBXGroup;
-			children = (
-				1767C9F811E64AEC00075E6B /* crypt.h */,
-				1767C9F911E64AEC00075E6B /* ioapi.c */,
-				1767C9FA11E64AEC00075E6B /* ioapi.h */,
-				1767C9FB11E64AEC00075E6B /* mztools.c */,
-				1767C9FC11E64AEC00075E6B /* mztools.h */,
-				1767C9FD11E64AEC00075E6B /* unzip.c */,
-				1767C9FE11E64AEC00075E6B /* unzip.h */,
-				1767C9FF11E64AEC00075E6B /* zip.c */,
-				1767CA0011E64AEC00075E6B /* zip.h */,
-			);
-			path = minizip;
 			sourceTree = "<group>";
 		};
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
@@ -175,6 +121,7 @@
 			children = (
 				1767CA0A11E64AFC00075E6B /* gray-apple-icon.png */,
 				1767CA0B11E64AFC00075E6B /* Pneumonia.icns */,
+				17A2BAE011E7326E00470FAD /* xpwntool */,
 				1767C8FE11E633CD00075E6B /* iphone_sn0w.png */,
 				8D1107310486CEB800E47090 /* Pneumonia-Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
@@ -245,6 +192,7 @@
 				1767C9D011E6433900075E6B /* Bundles.plist in Resources */,
 				1767CA0C11E64AFC00075E6B /* gray-apple-icon.png in Resources */,
 				1767CA0D11E64AFC00075E6B /* Pneumonia.icns in Resources */,
+				17A2BAE111E7326E00470FAD /* xpwntool in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,13 +205,7 @@
 			files = (
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				256AC3DA0F4B6AC300CF3369 /* PneumoniaAppDelegate.m in Sources */,
-				1767CA0311E64AEC00075E6B /* ioapi.c in Sources */,
-				1767CA0411E64AEC00075E6B /* mztools.c in Sources */,
-				1767CA0511E64AEC00075E6B /* unzip.c in Sources */,
-				1767CA0611E64AEC00075E6B /* zip.c in Sources */,
-				1767CA0711E64AEC00075E6B /* ZipArchive.mm in Sources */,
 				17D7CDDE11E67B2A00CBB60A /* Utilities.m in Sources */,
-				1711F69211E6C32A000C6606 /* ibootutil.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,11 +268,13 @@
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_VERSION = 4.0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
-				SDKROOT = macosx10.6;
+				SDKROOT = macosx10.4;
+				"SDKROOT[arch=x86_64]" = macosx10.5;
 			};
 			name = Debug;
 		};
@@ -339,10 +283,12 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = 4.0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-				SDKROOT = macosx10.6;
+				SDKROOT = macosx10.4;
+				"SDKROOT[arch=x86_64]" = macosx10.5;
 			};
 			name = Release;
 		};

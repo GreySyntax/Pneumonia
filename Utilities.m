@@ -7,86 +7,118 @@
 //
 
 #import "Utilities.h"
-#import "ZipArchive.h"
+#import <CommonCrypto/CommonDigest.h>
+#import <openssl/md5.h>
 
 @implementation Utilities
 
-//
++ (void)createAlert:(NSString *)message info:(NSString *)info window:(NSWindow *)window {
+	NSAlert *alert = [[NSAlert new] autorelease];
+	[alert addButtonWithTitle:@"OK"];
+	[alert setInformativeText:info];
+	[alert setMessageText:message];
+	[alert setAlertStyle:NSWarningAlertStyle];
+	[alert beginSheetModalForWindow:window modalDelegate:self didEndSelector:@selector(buttonDidEnd:returnCode:contextInfo:) contextInfo:nil];
+}
+
++ (void)buttonDidEnd:(NSAlert *)alert returnCode:(int)returnCode contextInfo:(void *)contextInfo {
+	if (returnCode==NSAlertFirstButtonReturn) {
+		//[self resetButton];
+	}
+}
+
 /***
  * Taken from:
  * http://www.iphonedevsdk.com/forum/iphone-sdk-development/17659-calculating-md5-hash-large-file.html#post82394
  */
-+ (NSString*)fileMD5:(NSString*)path
-{
++ (NSString*)fileMD5:(NSString*)path {
 	NSFileHandle *handle = [NSFileHandle fileHandleForReadingAtPath:path];
-	if( handle== nil ) return @"ERROR GETTING FILE MD5"; // file didnt exist
+	if (handle==nil)
+		return @"ERROR GETTING FILE MD5"; // file didnt exist
 	
 	CC_MD5_CTX md5;
-	
 	CC_MD5_Init(&md5);
 	
-	NSData* fileData;
-	
 	BOOL done = NO;
-	while(!done)
-	{
-		fileData = [handle readDataOfLength:256];
-		CC_MD5_Update(&md5, [fileData bytes], [fileData length]);
-		if( [fileData length] == 0 ) done = YES;
+	while (!done) {
+		NSAutoreleasePool *pool = [NSAutoreleasePool new];
+		NSData *data = [handle readDataOfLength:256];
+		CC_MD5_Update(&md5, [data bytes], [data length]);
+		if ([data length]==0) done = YES;
+		[pool release];
 	}
 	
 	unsigned char digest[CC_MD5_DIGEST_LENGTH];
 	CC_MD5_Final(digest, &md5);
 	
-	NSString *s = [NSString stringWithFormat: @"%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x",
-		 digest[0], digest[1], 
-		 digest[2], digest[3],
-		 digest[4], digest[5],
-		 digest[6], digest[7],
-		 digest[8], digest[9],
-		 digest[10], digest[11],
-		 digest[12], digest[13],
-		 digest[14], digest[15]];
-	
-	[fileData dealloc];
-	
-	return s;
+    NSMutableString *hash = [NSMutableString string];
+    for (int i = 0; i < 16; i++)
+        [hash appendFormat:@"%02x", digest[i]];
+    return hash;
 }
 
 //generate md5 hash from string
-+ (NSString *) returnMD5Hash:(NSString*)concat {
-    const char *concat_str = [concat UTF8String];
-    unsigned char result[CC_MD5_DIGEST_LENGTH];
-    CC_MD5(concat_str, strlen(concat_str), result);
++ (NSString *)returnMD5Hash:(NSString*)concat {
+	NSData *data = [concat dataUsingEncoding:NSUTF8StringEncoding];
+	
+	CC_MD5_CTX md5;
+	CC_MD5_Init(&md5);
+	
+	CC_MD5_Update(&md5, [data bytes], [data length]);
+	
+	unsigned char digest[CC_MD5_DIGEST_LENGTH];
+	CC_MD5_Final(digest, &md5);
+	
     NSMutableString *hash = [NSMutableString string];
     for (int i = 0; i < 16; i++)
-        [hash appendFormat:@"%02X", result[i]];
-    return [hash lowercaseString];
-	
+        [hash appendFormat:@"%02x", digest[i]];
+	return hash;
 }
 
-+ (BOOL) unzip:(NSString *)path toPath:(NSString *)topath {
-
-	ZipArchive *e= [[ZipArchive alloc] init];
++ (BOOL)unzip:(NSString *)path toPath:(NSString *)toPath {
+	BOOL result = YES;
 	
-	if([e UnzipOpenFile:path]) {
-		
-		if ( ![e UnzipFileTo:topath overWrite:YES]) {
-			
-			NSLog(@"Error extracting.");
-			
-			[e UnzipCloseFile];
-			[e release];
-			
-			NSLog(@"Failed to unzip: %@", path);
-			NSLog(@"to:	%@", topath);
-			return NO;
+	if ([[NSFileManager defaultManager] isReadableFileAtPath:@"/tmp/nspwn_ipsw"]) {
+		//remove file
+		NSError *error;
+		if ([[NSFileManager defaultManager] respondsToSelector:@selector(removeFileAtPath:handler:)]) {
+			if (![[NSFileManager defaultManager] removeFileAtPath:@"/tmp/nspwn_ipsw" handler:nil]) {
+				[self createAlert:@"Failed to remove temp files" info:@"Failed to remove the \"/tmp/nspwn_ipsw\""];
+				return NO;
+			}
+		} else {
+			if (![[NSFileManager defaultManager] removeItemAtPath:@"/tmp/nspwn_ipsw" error:&error]) {
+				NSLog(@"Failed to remove \"/tmp/nspwn_ipsw\" error: %@", error);
+				[Utilities createAlert:@"Failed to remove temp files" info:@"Failed to remove the \"/tmp/nspwn_ipsw\""];
+				return NO;
+			}
 		}
 	}
 	
-	[e  UnzipCloseFile];
-	[e release];
-	return YES;
+	NSTask* theTask = [[NSTask alloc] init];
+	[theTask setLaunchPath:@"/usr/bin/ditto"];
+	[theTask setCurrentDirectoryPath:[@"~/" stringByExpandingTildeInPath]];
+	[theTask setArguments:[NSArray arrayWithObjects:@"-xk", path, toPath, nil]];
+	[theTask launch];
+	[theTask waitUntilExit];
+	result = ([theTask terminationStatus]==0);
+	[theTask release];
+	
+	return result;
 }
 
++ (BOOL)xpwnDecrypt:(NSString *)file toPath:(NSString *)toPath key:(NSString *)key iv:(NSString *)iv {
+	BOOL result = YES;
+	
+	NSTask* theTask = [[NSTask alloc] init];
+	[theTask setLaunchPath:[[NSBundle mainBundle] pathForResource:@"xpwntool" ofType:nil]];
+	[theTask setCurrentDirectoryPath:[[NSBundle mainBundle] resourcePath]];
+	[theTask setArguments:[NSArray arrayWithObjects:file, toPath, @"-k", key, @"-iv", iv]];
+	[theTask launch];
+	[theTask waitUntilExit];
+	result = ([theTask terminationStatus] == 0);
+	[theTask release];
+	
+	return result;
+}
 @end
