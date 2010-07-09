@@ -339,7 +339,7 @@
 		fRef = 2A45670311E7CFA70087C752 /* PController.m */;
 		name = "PController.m: 302";
 		rLen = 0;
-		rLoc = 11528;
+		rLoc = 11564;
 		rType = 0;
 		vrLen = 2228;
 		vrLoc = 11635;
@@ -353,6 +353,73 @@
 		rType = 0;
 		vrLen = 1722;
 		vrLoc = 6187;
+	};
+	1797AAEC11E7ED32008C3CF8 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 2A45670711E7CFBD0087C752 /* Devices.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+			"iPhone2,1",
+			firmwares,
+			7D11,
+			files,
+			0,
+			path,
+		);
+		name = /Users/jordan/Desktop/Pneumonia/Resources/Devices.plist;
+		rLen = 0;
+		rLoc = 9223372036854775807;
+	};
+	1797AAED11E7ED32008C3CF8 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2A45670211E7CFA70087C752 /* PController.h */;
+		name = "PController.h: 51";
+		rLen = 135;
+		rLoc = 1270;
+		rType = 0;
+		vrLen = 1389;
+		vrLoc = 21;
+	};
+	1797AAEE11E7ED32008C3CF8 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2A45670011E7CFA70087C752 /* PAddons.h */;
+		name = "PAddons.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 222;
+		vrLoc = 0;
+	};
+	1797AAEF11E7ED32008C3CF8 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2A45670311E7CFA70087C752 /* PController.m */;
+		name = "PController.m: 297";
+		rLen = 0;
+		rLoc = 11384;
+		rType = 0;
+		vrLen = 2193;
+		vrLoc = 8563;
+	};
+	1797AAF011E7ED32008C3CF8 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2A45670311E7CFA70087C752 /* PController.m */;
+		name = "PController.m: 404";
+		rLen = 0;
+		rLoc = 15560;
+		rType = 0;
+		vrLen = 1612;
+		vrLoc = 14111;
+	};
+	1797AAF111E7ED4E008C3CF8 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2A45670311E7CFA70087C752 /* PController.m */;
+		name = "PController.m: 326";
+		rLen = 0;
+		rLoc = 12453;
+		rType = 0;
+		vrLen = 1924;
+		vrLoc = 11542;
 	};
 	17D7CE4C11E67EEC00CBB60A /* PlistBookmark */ = {
 		isa = PlistBookmark;
@@ -532,6 +599,12 @@
 			1797AAE511E7EBE9008C3CF8 /* PBXTextBookmark */ = 1797AAE511E7EBE9008C3CF8 /* PBXTextBookmark */;
 			1797AAE611E7EBE9008C3CF8 /* PBXTextBookmark */ = 1797AAE611E7EBE9008C3CF8 /* PBXTextBookmark */;
 			1797AAE711E7EC41008C3CF8 /* PBXTextBookmark */ = 1797AAE711E7EC41008C3CF8 /* PBXTextBookmark */;
+			1797AAEC11E7ED32008C3CF8 /* PlistBookmark */ = 1797AAEC11E7ED32008C3CF8 /* PlistBookmark */;
+			1797AAED11E7ED32008C3CF8 /* PBXTextBookmark */ = 1797AAED11E7ED32008C3CF8 /* PBXTextBookmark */;
+			1797AAEE11E7ED32008C3CF8 /* PBXTextBookmark */ = 1797AAEE11E7ED32008C3CF8 /* PBXTextBookmark */;
+			1797AAEF11E7ED32008C3CF8 /* PBXTextBookmark */ = 1797AAEF11E7ED32008C3CF8 /* PBXTextBookmark */;
+			1797AAF011E7ED32008C3CF8 /* PBXTextBookmark */ = 1797AAF011E7ED32008C3CF8 /* PBXTextBookmark */;
+			1797AAF111E7ED4E008C3CF8 /* PBXTextBookmark */ = 1797AAF111E7ED4E008C3CF8 /* PBXTextBookmark */;
 			17D7CE4C11E67EEC00CBB60A = 17D7CE4C11E67EEC00CBB60A /* PlistBookmark */;
 			17D7CF2311E6904E00CBB60A = 17D7CF2311E6904E00CBB60A /* PBXTextBookmark */;
 			17D7CF2411E6904E00CBB60A = 17D7CF2411E6904E00CBB60A /* PBXTextBookmark */;
@@ -552,6 +625,13 @@
 			sepNavVisRange = "{0, 244}";
 		};
 	};
+	2A45670011E7CFA70087C752 /* PAddons.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {945, 645}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 222}";
+		};
+	};
 	2A45670211E7CFA70087C752 /* PController.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {957, 676}}";
@@ -561,9 +641,9 @@
 	};
 	2A45670311E7CFA70087C752 /* PController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1048, 5304}}";
-			sepNavSelRange = "{7359, 0}";
-			sepNavVisRange = "{6187, 1722}";
+			sepNavIntBoundsRect = "{{0, 0}, {1111, 5187}}";
+			sepNavSelRange = "{12453, 0}";
+			sepNavVisRange = "{11542, 1924}";
 		};
 	};
 	2A45670711E7CFBD0087C752 /* Devices.plist */ = {

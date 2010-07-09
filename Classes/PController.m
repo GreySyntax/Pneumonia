@@ -294,7 +294,7 @@ NSString * const PCIDeviceFirmwareValidationError = @"This firmware is not valid
 			
 			if ([pDict objectForKey:@"patch"] =! @"") {
 				[self xpwnDecrypt:[PTMP stringByAppendingString:[pDict objectForKey:@"path"]]
-						  newFile:[pDict objectForKey:@"target"]
+						  newFile:[customPath stringByAppendingString:[pDict objectForKey:@"target"]
 						patchFile:[pDict objectForKey:@"patch"]
 							  key:[pDict objectForKey:@"key"]
 							   iv:[pDict objectForKey:@"iv"]
@@ -401,7 +401,7 @@ NSString * const PCIDeviceFirmwareValidationError = @"This firmware is not valid
 	NSTask* theTask = [[NSTask alloc] init];
 	[theTask setLaunchPath:[[NSBundle mainBundle] pathForResource:@"xpwntool" ofType:nil]];
 	[theTask setCurrentDirectoryPath:[[NSBundle mainBundle] resourcePath]];
-	[theTask setArguments:[NSArray arrayWithObjects:file, toPath, @"-k", key, @"-iv", iv]];
+	[theTask setArguments:[NSArray arrayWithObjects:file, newFile, @"-k", key, @"-iv", iv]];
 	[theTask launch];
 	[theTask waitUntilExit];
 	result = ([theTask terminationStatus] == 0);

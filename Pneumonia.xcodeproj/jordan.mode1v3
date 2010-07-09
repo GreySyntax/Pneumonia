@@ -329,7 +329,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>1797AAE711E7EC41008C3CF8</string>
+										<string>1797AAF111E7ED4E008C3CF8</string>
 										<key>history</key>
 										<array>
 											<string>1767CB6C11E6705100075E6B</string>
@@ -346,9 +346,10 @@
 											<string>1720158611E6B209008C66E1</string>
 											<string>1797AACA11E7E76D008C3CF8</string>
 											<string>1797AACB11E7E76D008C3CF8</string>
-											<string>1797AAE311E7EBE9008C3CF8</string>
-											<string>1797AAE411E7EBE9008C3CF8</string>
-											<string>1797AAE511E7EBE9008C3CF8</string>
+											<string>1797AAEC11E7ED32008C3CF8</string>
+											<string>1797AAED11E7ED32008C3CF8</string>
+											<string>1797AAEE11E7ED32008C3CF8</string>
+											<string>1797AAEF11E7ED32008C3CF8</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -546,6 +547,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>1797AAE911E7EC89008C3CF8</string>
 		<string>1797AAD811E7E76D008C3CF8</string>
 		<string>1797AAD911E7E76D008C3CF8</string>
 		<string>1CD10A99069EF8BA00B06720</string>
@@ -1178,8 +1180,8 @@
 			<true/>
 			<key>TableOfContents</key>
 			<array>
-				<string>1767C9F111E64AD300075E6B</string>
-				<string>1767C9F211E64AD300075E6B</string>
+				<string>1797AAE911E7EC89008C3CF8</string>
+				<string>1797AAEA11E7EC89008C3CF8</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
 				<string>1CA1AED706398EBD00589147</string>
 			</array>
@@ -1188,9 +1190,9 @@
 			<key>WindowString</key>
 			<string>88 346 744 409 0 0 1280 778 </string>
 			<key>WindowToolGUID</key>
-			<string>1767C9F111E64AD300075E6B</string>
+			<string>1797AAE911E7EC89008C3CF8</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>Identifier</key>
