@@ -48,7 +48,7 @@
 }
 
 - (void)loadDeviceDictionary:(NSString*)model {
-
+	
 	deviceDict = [[NSDictionary dictionaryWithContentsOfFile:bundles] objectForKey:model];
 	[deviceDict retain];
 }
@@ -61,101 +61,99 @@
 	BOOL sumValid = NO;
 	BOOL extracted = NO;
 	
-	for (NSDictionary *tempDict in [OS3 objectForKey:@"required"]) {
+	for (NSDictionary *bundleDict in deviceDict) {
 		
-		BOOL exists = [fileManager isReadableFileAtPath:[resources stringByAppendingFormat:@"/%@", [tempDict objectForKey:@"target"]]];
-		
-		//Create
-		if (! exists) {
+		for (NSDictionary *tempDict in [bundleDict objectForKey:@"required"]) {
 			
-			NSLog(@"Failed to locate required file, attempting to generate.");
+			BOOL exists = [fileManager isReadableFileAtPath:[resources stringByAppendingFormat:@"/%@", [tempDict objectForKey:@"target"]]];
 			
-			BOOL package = [fileManager isReadableFileAtPath:[documents stringByAppendingString:[OS3 objectForKey:@"file"]]];
-			if (! package) {
-				NSLog(@"Failed to locate firmware bundle");
+			//Create
+			if (! exists) {
 				
-				[self createAlert:@"Firmware not found"
-							 info:[NSString stringWithFormat:@"Failed to locate \"%@\" please plave the file in your Documents folder and try again",
-								   [tempDict objectForKey:@"file"]]
+				NSLog(@"Failed to locate required file, attempting to generate.");
+				
+				BOOL package = [fileManager isReadableFileAtPath:[documents stringByAppendingString:[OS3 objectForKey:@"file"]]];
+				if (! package) {
+					NSLog(@"Failed to locate firmware bundle");
+					
+					[self createAlert:@"Firmware not found"
+								 info:[NSString stringWithFormat:@"Failed to locate \"%@\" please plave the file in your Documents folder and try again",
+									   [tempDict objectForKey:@"file"]]
+						setAlertStyle:NSWarningAlertStyle
+					 ];
+					
+					return NO;
+				}
+				
+				//md5sum bundle 
+				if (! sumValid) {
+					BOOL shouldMatch = [OS3 valueForKey:@"md5_validates"];
+					NSString *expected = [OS3 objectForKey:@"md5_sum"];
+					NSString *actual = [Utilities fileMD5:[documents stringByAppendingString:[OS3 objectForKey:@"file"]]];
+					
+					if ((expected == actual) == shouldMatch) {
+						
+						[self createAlert:@"Failed to validate ipsw"
+									 info:[NSString stringWithFormat:@"Failed to validate \"%@\"", [tempDict objectForKey:@"file"]] 
 							setAlertStyle:NSWarningAlertStyle
+						 ];
+						
+						return NO;
+					}
+					sumValid = YES;
+					
+					[expected release];
+					[actual release];
+				}
+				//extract to /tmp/nspwn_ipsw
+				if (! extracted) {
+					if (! [Utilities unzip:[documents stringByAppendingString:[OS3 objectForKey:@"file"]] toPath:@"/tmp/nspwn_ipsw"]) {
+						
+						[self createAlert:@"Failed to extract ipsw"
+									 info:[NSString stringWithFormat:@"Failed to extract \"%@\"", [documents stringByAppendingString:[OS3 objectForKey:@"file"]]]
+							setAlertStyle:NSWarningAlertStyle
+						 ];
+						
+						return NO;
+					}
+					extracted = YES; 
+				}
+				
+				//copy file, decrypt, save
+				NSString *grab = [@"/tmp/nspwn_ipswn" stringByAppendingString:[tempDict objectForKey:@"file"]];
+				BOOL decrypt = [tempDict objectForKey:@"decrypt"];
+				BOOL patch = [tempDict objectForKey:@"patch"];
+				
+				if (decrypt) {
+					//use xpwn-tool to decrypt using iv & key
+				}
+				
+				if (patch) {
+					//use bspatch on the ipsw
+				}
+			}
+		}
+		
+		if ([fileManager isReadableFileAtPath:@"/tmp/nspwn_ipsw"]) {
+			//remove file
+			NSError *error;
+			if (! [fileManager removeItemAtPath:@"/tmp/nspwn_ipsw" error:&error]) {
+				NSLog(@"Failed to remove \"/tmp/nspwn_ipsw\" error: %@", error);
+				[self createAlert:@"Failed to remove temp files"
+							 info:@"Failed to remove the \"/tmp/nspwn_ipsw\""
+					setAlertStyle:NSWarningAlertStyle
 				 ];
 				
 				return NO;
 			}
-			
-			//md5sum bundle 
-			if (! sumValid) {
-				BOOL shouldMatch = [OS3 valueForKey:@"md5_validates"];
-				NSString *expected = [OS3 objectForKey:@"md5_sum"];
-				NSString *actual = [Utilities fileMD5:[documents stringByAppendingString:[OS3 objectForKey:@"file"]]];
-			
-				if ((expected == actual) == shouldMatch) {
-				
-					[self createAlert:@"Failed to validate ipsw"
-								 info:[NSString stringWithFormat:@"Failed to validate \"%@\"", [tempDict objectForKey:@"file"]] 
-						setAlertStyle:NSWarningAlertStyle
-					 ];
-					
-					return NO;
-				}
-				sumValid = YES;
-				
-				[expected release];
-				[actual release];
-			}
-			//extract to /tmp/nspwn_ipsw
-			if (! extracted) {
-				if (! [Utilities unzip:[documents stringByAppendingString:[OS3 objectForKey:@"file"]] toPath:@"/tmp/nspwn_ipsw"]) {
-				
-					[self createAlert:@"Failed to extract ipsw"
-								 info:[NSString stringWithFormat:@"Failed to extract \"%@\"", [documents stringByAppendingString:[OS3 objectForKey:@"file"]]]
-						setAlertStyle:NSWarningAlertStyle
-					 ];
-					
-					return NO;
-				}
-				extracted = YES; 
-			}
-			
-			//copy file, decrypt, save
-			NSString *grab = [@"/tmp/nspwn_ipswn" stringByAppendingString:[tempDict objectForKey:@"file"]];
-			BOOL decrypt = [tempDict objectForKey:@"decrypt"];
-			BOOL patch = [tempDict objectForKey:@"patch"];
-			
-			if (decrypt) {
-				//use xpwn-tool to decrypt using iv & key
-			}
-			
-			if (patch) {
-				//use bspatch on the ipsw
-			}
 		}
-	}
-	
-	sumValid = NO;
-	extracted = NO;
-	
-	//remove file
-	NSError *error;
-	if (! [fileManager removeItemAtPath:@"/tmp/nspwn_ipsw" error:&error]) {
-		NSLog(@"Failed to remove \"/tmp/nspwn_ipsw\" error: %@", error);
-		[self createAlert:@"Failed to remove temp files"
-					 info:@"Failed to remove the \"/tmp/nspwn_ipsw\""
-			setAlertStyle:NSWarningAlertStyle
-		 ];
-		
-		return NO;
-	}
-	
-	for (NSDictionary *tempDict in [OS3 objectForKey:@"required"]) {
-		//handle OS4 firmware
 	}
 	
 	return YES;
 }
 
 - (void)bootDevice {
-
+	
 	//Process dictionary
 	if (! [self processDict]) {
 		return;
