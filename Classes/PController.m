@@ -293,7 +293,7 @@ NSString * const PCIDeviceFirmwareValidationError = @"This firmware is not valid
 			
 			if (![[file objectForKey:PBPatch] isEqual:@""]) {
 				[self xpwnDecrypt:[PTMP stringByAppendingPathComponent:[file objectForKey:PBPath]]
-						  newFile:[customPath stringByAppendingPathComponent:[file objectForKey:PBTarget]]
+						  newFile:[stockPath stringByAppendingPathComponent:[file objectForKey:PBTarget]]
 						patchFile:[file objectForKey:PBPatch]
 							  key:[file objectForKey:PBKey]
 							   iv:[file objectForKey:PBIV]];
