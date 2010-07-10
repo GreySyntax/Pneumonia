@@ -72,12 +72,81 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 300406696;
-			PBXWorkspaceStateSaveDate = 300406696;
+			PBXPerProjectTemplateStateSaveDate = 300421250;
+			PBXWorkspaceStateSaveDate = 300421250;
+		};
+		perUserProjectItems = {
+			2A8F623311E8104F00C105C8 /* PlistBookmark */ = 2A8F623311E8104F00C105C8 /* PlistBookmark */;
+			2A8F623C11E8108500C105C8 /* PBXBookmark */ = 2A8F623C11E8108500C105C8 /* PBXBookmark */;
+			2A8F624411E8108C00C105C8 /* PBXTextBookmark */ = 2A8F624411E8108C00C105C8 /* PBXTextBookmark */;
+			2A8F624511E8108C00C105C8 /* PlistBookmark */ = 2A8F624511E8108C00C105C8 /* PlistBookmark */;
 		};
 		sourceControlManager = 2A9AF79811E6BDF6003A0174 /* Source Control */;
 		userBuildSettings = {
 		};
+	};
+	2A45670211E7CFA70087C752 /* PController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1221, 676}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{21, 1389}";
+			sepNavWindowFrame = "{{0, 4}, {1280, 774}}";
+		};
+	};
+	2A45670311E7CFA70087C752 /* PController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1221, 5239}}";
+			sepNavSelRange = "{11562, 0}";
+			sepNavVisRange = "{14060, 1651}";
+			sepNavWindowFrame = "{{0, 4}, {1280, 774}}";
+		};
+	};
+	2A45670711E7CFBD0087C752 /* Devices.plist */ = {
+		uiCtxt = {
+			sepNavWindowFrame = "{{0, 4}, {1280, 774}}";
+		};
+	};
+	2A8F623311E8104F00C105C8 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 2A45670711E7CFBD0087C752 /* Devices.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+			"iPhone2,1",
+			firmwares,
+			7D11,
+		);
+		name = /Development/Pneumonia/Resources/Devices.plist;
+		rLen = 0;
+		rLoc = 2147483647;
+	};
+	2A8F623C11E8108500C105C8 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 2A45670311E7CFA70087C752 /* PController.m */;
+	};
+	2A8F624411E8108C00C105C8 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2A45670311E7CFA70087C752 /* PController.m */;
+		name = "PController.m: 302";
+		rLen = 0;
+		rLoc = 11562;
+		rType = 0;
+		vrLen = 1651;
+		vrLoc = 14060;
+	};
+	2A8F624511E8108C00C105C8 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 2A45670711E7CFBD0087C752 /* Devices.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+			"iPhone2,1",
+			firmwares,
+			7D11,
+		);
+		name = /Development/Pneumonia/Resources/Devices.plist;
+		rLen = 0;
+		rLoc = 2147483647;
 	};
 	2A9AF78E11E6BDD1003A0174 /* Pneumonia */ = {
 		isa = PBXExecutable;

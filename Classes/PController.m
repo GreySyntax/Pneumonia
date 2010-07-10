@@ -273,7 +273,6 @@ NSString * const PCIDeviceFirmwareValidationError = @"This firmware is not valid
 			[theAlert setInformativeText:[NSString stringWithFormat:@"Firmware %@ was unable to be extracted", [stockFirmwareDic objectForKey:PBFVersion]]];
 			[theAlert setAlertStyle:2];
 			[theAlert runModal];
-			[[NSApplication sharedApplication] terminate:self];
 			if ([manager fileExistsAtPath:PTMP]) {
 				if ([manager respondsToSelector:@selector(removeFileAtPath:handler:)]) {
 					[manager removeFileAtPath:PTMP handler:nil];
@@ -281,6 +280,7 @@ NSString * const PCIDeviceFirmwareValidationError = @"This firmware is not valid
 					[manager removeItemAtPath:PTMP error:nil];
 				}
 			}
+			[[NSApplication sharedApplication] terminate:self];
 			return;
 		}
 		
@@ -289,18 +289,14 @@ NSString * const PCIDeviceFirmwareValidationError = @"This firmware is not valid
 		[NSThread sleepUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.5]];
 		double increasement = 1.0/(double)[[stockFirmwareDic objectForKey:PBFiles] count];
 		for (int i=0; i<[[stockFirmwareDic objectForKey:PBFiles] count]; i++) {
+			NSDictionary *file = [[stockFirmwareDic objectForKey:PBFiles] objectAtIndex:i];
 			
-			NSDictionary *pDict = [[stockFirmwareDic objectForKey:PBFiles] objectAtIndex:i];
-			
-			if ([pDict objectForKey:@"patch"] =! @"") {
-				[self xpwnDecrypt:[PTMP stringByAppendingString:[pDict objectForKey:@"path"]]
-						  newFile:[customPath stringByAppendingString:[pDict objectForKey:@"target"]
-						patchFile:[pDict objectForKey:@"patch"]
-							  key:[pDict objectForKey:@"key"]
-							   iv:[pDict objectForKey:@"iv"]
-				 ];
-				
-				
+			if (![[file objectForKey:PBPatch] isEqual:@""]) {
+				[self xpwnDecrypt:[PTMP stringByAppendingPathComponent:[file objectForKey:PBPath]]
+						  newFile:[customPath stringByAppendingPathComponent:[file objectForKey:PBTarget]]
+						patchFile:[file objectForKey:PBPatch]
+							  key:[file objectForKey:PBKey]
+							   iv:[file objectForKey:PBIV]];
 			}
 			
 			[S2Progress setDoubleValue:[S2Progress doubleValue]+increasement];
@@ -395,11 +391,10 @@ NSString * const PCIDeviceFirmwareValidationError = @"This firmware is not valid
 }
 
 - (BOOL)xpwnDecrypt:(NSString *)file newFile:(NSString *)newFile patchFile:(NSString *)patchFile key:(NSString *)key iv:(NSString *)iv {
-	
 	BOOL result = YES;
 	
 	NSTask* theTask = [[NSTask alloc] init];
-	[theTask setLaunchPath:[[NSBundle mainBundle] pathForResource:@"xpwntool" ofType:nil]];
+	[theTask setLaunchPath:[[NSBundle mainBundle] pathForResource:@"xpwntool" ofType:@""]];
 	[theTask setCurrentDirectoryPath:[[NSBundle mainBundle] resourcePath]];
 	[theTask setArguments:[NSArray arrayWithObjects:file, newFile, @"-k", key, @"-iv", iv]];
 	[theTask launch];
