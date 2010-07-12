@@ -25,6 +25,7 @@ NSString *PBIV = @"iv";
 NSString *PBKey = @"key";
 NSString *PBTarget = @"target";
 NSString *PBPath = @"path";
+NSString *PBEncrypt = @"encrypt"
 
 //Choose Info
 NSString * const PCISender = @"sender";
@@ -291,11 +292,15 @@ NSString * const PCIDeviceFirmwareValidationError = @"This firmware is not valid
 		for (int i=0; i<[[stockFirmwareDic objectForKey:PBFiles] count]; i++) {
 			NSDictionary *file = [[stockFirmwareDic objectForKey:PBFiles] objectAtIndex:i];
 			
-			if (![[file objectForKey:PBPatch] isEqual:@""]) {
+			if (![[file objectForKey:PBKey] isEqual:@""] && ![[file objectForKey:PBIV] isEqual:@""]) {
 				[self xpwnDecrypt:[PTMP stringByAppendingPathComponent:[file objectForKey:PBPath]]
 						  newFile:[stockPath stringByAppendingPathComponent:[file objectForKey:PBTarget]]
 							  key:[file objectForKey:PBKey]
 							   iv:[file objectForKey:PBIV]];
+			}
+			
+			if ([[file objectForKey:PBEncrypt] boolValue]) {
+				//TODO xpwntool encrypt
 			}
 			
 			[S2Progress setDoubleValue:[S2Progress doubleValue]+increasement];
@@ -348,6 +353,18 @@ NSString * const PCIDeviceFirmwareValidationError = @"This firmware is not valid
 		double increasement = 1.0/(double)[[customFirmwareDic objectForKey:PBFiles] count];
 		for (int i=0; i<[[customFirmwareDic objectForKey:PBFiles] count]; i++) {
 			
+			NSDictionary *file = [[stockFirmwareDic objectForKey:PBFiles] objectAtIndex:i];
+			
+			if (![[file objectForKey:PBKey] isEqual:@""] && ![[file objectForKey:PBIV] isEqual:@""]) {
+				[self xpwnDecrypt:[PTMP stringByAppendingPathComponent:[file objectForKey:PBPath]]
+						  newFile:[stockPath stringByAppendingPathComponent:[file objectForKey:PBTarget]]
+							  key:[file objectForKey:PBKey]
+							   iv:[file objectForKey:PBIV]];
+			}
+			
+			if ([[file objectForKey:PBEncrypt] boolValue]) {
+				//TODO xpwntool encrypt
+			}
 			
 			[S2Progress setDoubleValue:[S2Progress doubleValue]+increasement];
 		}

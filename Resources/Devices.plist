@@ -86,9 +86,9 @@
 						<key>patch</key>
 						<string></string>
 						<key>iv</key>
-						<string>2bfaa179582e267ad80f4cc91f46940f</string>
+						<string></string>
 						<key>key</key>
-						<string>d6d5ac10136dcee693abb0364c011c5e23c46afdbe435b2eaa68e5c809becd31</string>
+						<string></string>
 						<key>target</key>
 						<string>kernel.40</string>
 						<key>path</key>
@@ -97,12 +97,14 @@
 						<string>Kernel</string>
 					</dict>
 					<dict>
+						<key>encrypt</key>
+						<false/>
 						<key>patch</key>
 						<string></string>
 						<key>iv</key>
-						<string>6fbe76fd654a6f38c6a29a22f484d6d1</string>
+						<string></string>
 						<key>key</key>
-						<string>90e108e46e4ac83dec5d3af977a2d95d4589401cf3c1a23e5cbf525263038944</string>
+						<string></string>
 						<key>target</key>
 						<string>devtree.40</string>
 						<key>path</key>
@@ -125,6 +127,8 @@
 				<key>files</key>
 				<array>
 					<dict>
+						<key>encrypt</key>
+						<true/>
 						<key>patch</key>
 						<string>ibec.patch</string>
 						<key>iv</key>
@@ -139,6 +143,8 @@
 						<string>iBEC</string>
 					</dict>
 					<dict>
+						<key>encrypt</key>
+						<true/>
 						<key>patch</key>
 						<string>iboot.patch</string>
 						<key>iv</key>
