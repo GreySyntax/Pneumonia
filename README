@@ -2,9 +2,7 @@ Mac incationation of iBooty / Payload Pwner (ih8sn0wforums.com).
 
 TODO:
 Extract required files, when their not found then:
-- Decrypt using xpwn-tool
 - Patch using bspatch and iH8sn0ws files from Payload Pwner
-- Save to the specified file in Resources.plist
 
 USB Support:
 - Hopefully iBoot util ;)
