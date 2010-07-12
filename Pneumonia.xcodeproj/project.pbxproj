@@ -1,0 +1,344 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1797AA0E11E7E5EC008C3CF8 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1797AA0D11E7E5EC008C3CF8 /* IOKit.framework */; };
+		2A06FBF811EBB2B0006D924A /* iPhone2,1 in Resources */ = {isa = PBXBuildFile; fileRef = 2A06FBE611EBB2B0006D924A /* iPhone2,1 */; };
+		2A06FBF911EBB2B0006D924A /* iPod2,1 in Resources */ = {isa = PBXBuildFile; fileRef = 2A06FBEC11EBB2B0006D924A /* iPod2,1 */; };
+		2A06FBFA11EBB2B0006D924A /* iPod3,1 in Resources */ = {isa = PBXBuildFile; fileRef = 2A06FBF211EBB2B0006D924A /* iPod3,1 */; };
+		2A45670411E7CFA70087C752 /* PAddons.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A45670111E7CFA70087C752 /* PAddons.m */; };
+		2A45670511E7CFA70087C752 /* PController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A45670311E7CFA70087C752 /* PController.m */; };
+		2A45670E11E7CFBD0087C752 /* Devices.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2A45670711E7CFBD0087C752 /* Devices.plist */; };
+		2A45670F11E7CFBD0087C752 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2A45670811E7CFBD0087C752 /* InfoPlist.strings */; };
+		2A45671011E7CFBD0087C752 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A45670A11E7CFBD0087C752 /* MainMenu.xib */; };
+		2A45671111E7CFBD0087C752 /* gray-apple-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A45670C11E7CFBD0087C752 /* gray-apple-icon.png */; };
+		2A45671211E7CFBD0087C752 /* iphone_sn0w.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A45670D11E7CFBD0087C752 /* iphone_sn0w.png */; };
+		2A45671511E7CFD20087C752 /* Pneumonia.icns in Resources */ = {isa = PBXBuildFile; fileRef = 2A45671411E7CFD20087C752 /* Pneumonia.icns */; };
+		2A45672511E7D2730087C752 /* xpwntool in Resources */ = {isa = PBXBuildFile; fileRef = 2A45672411E7D2730087C752 /* xpwntool */; };
+		2A9AF86911E6E628003A0174 /* libcrypto.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A9AF86811E6E628003A0174 /* libcrypto.dylib */; };
+		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
+		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
+		1797AA0D11E7E5EC008C3CF8 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		256AC3F00F4B6AF500CF3369 /* Pneumonia_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pneumonia_Prefix.pch; sourceTree = "<group>"; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		2A06FBE611EBB2B0006D924A /* iPhone2,1 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "iPhone2,1"; sourceTree = "<group>"; };
+		2A06FBEC11EBB2B0006D924A /* iPod2,1 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "iPod2,1"; sourceTree = "<group>"; };
+		2A06FBF211EBB2B0006D924A /* iPod3,1 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "iPod3,1"; sourceTree = "<group>"; };
+		2A45670011E7CFA70087C752 /* PAddons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAddons.h; sourceTree = "<group>"; };
+		2A45670111E7CFA70087C752 /* PAddons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAddons.m; sourceTree = "<group>"; };
+		2A45670211E7CFA70087C752 /* PController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PController.h; sourceTree = "<group>"; };
+		2A45670311E7CFA70087C752 /* PController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PController.m; sourceTree = "<group>"; };
+		2A45670711E7CFBD0087C752 /* Devices.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Devices.plist; sourceTree = "<group>"; };
+		2A45670911E7CFBD0087C752 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2A45670B11E7CFBD0087C752 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		2A45670C11E7CFBD0087C752 /* gray-apple-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gray-apple-icon.png"; sourceTree = "<group>"; };
+		2A45670D11E7CFBD0087C752 /* iphone_sn0w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iphone_sn0w.png; sourceTree = "<group>"; };
+		2A45671311E7CFCD0087C752 /* Pneumonia-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Pneumonia-Info.plist"; sourceTree = "<group>"; };
+		2A45671411E7CFD20087C752 /* Pneumonia.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Pneumonia.icns; sourceTree = SOURCE_ROOT; };
+		2A45672411E7D2730087C752 /* xpwntool */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = xpwntool; sourceTree = "<group>"; };
+		2A9AF86811E6E628003A0174 /* libcrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.dylib; path = usr/lib/libcrypto.dylib; sourceTree = SDKROOT; };
+		8D1107320486CEB800E47090 /* Pneumonia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pneumonia.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8D11072E0486CEB800E47090 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
+				2A9AF86911E6E628003A0174 /* libcrypto.dylib in Frameworks */,
+				1797AA0E11E7E5EC008C3CF8 /* IOKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
+				2A9AF86811E6E628003A0174 /* libcrypto.dylib */,
+			);
+			name = "Linked Frameworks";
+			sourceTree = "<group>";
+		};
+		1058C7A2FEA54F0111CA2CBB /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				29B97324FDCFA39411CA2CEA /* AppKit.framework */,
+				13E42FB307B3F0F600E4EEF1 /* CoreData.framework */,
+				29B97325FDCFA39411CA2CEA /* Foundation.framework */,
+				1797AA0D11E7E5EC008C3CF8 /* IOKit.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D1107320486CEB800E47090 /* Pneumonia.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* Pneumonia */ = {
+			isa = PBXGroup;
+			children = (
+				2A4566FF11E7CFA70087C752 /* Classes */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				2A45670611E7CFBD0087C752 /* Resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = Pneumonia;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				256AC3F00F4B6AF500CF3369 /* Pneumonia_Prefix.pch */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
+				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2A4566FF11E7CFA70087C752 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				2A45670011E7CFA70087C752 /* PAddons.h */,
+				2A45670111E7CFA70087C752 /* PAddons.m */,
+				2A45670211E7CFA70087C752 /* PController.h */,
+				2A45670311E7CFA70087C752 /* PController.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		2A45670611E7CFBD0087C752 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2A45671311E7CFCD0087C752 /* Pneumonia-Info.plist */,
+				2A45671411E7CFD20087C752 /* Pneumonia.icns */,
+				2A45670711E7CFBD0087C752 /* Devices.plist */,
+				2A45670811E7CFBD0087C752 /* InfoPlist.strings */,
+				2A45670A11E7CFBD0087C752 /* MainMenu.xib */,
+				2A45670C11E7CFBD0087C752 /* gray-apple-icon.png */,
+				2A45670D11E7CFBD0087C752 /* iphone_sn0w.png */,
+				2A06FBE611EBB2B0006D924A /* iPhone2,1 */,
+				2A06FBEC11EBB2B0006D924A /* iPod2,1 */,
+				2A06FBF211EBB2B0006D924A /* iPod3,1 */,
+				2A45672411E7D2730087C752 /* xpwntool */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8D1107260486CEB800E47090 /* Pneumonia */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "Pneumonia" */;
+			buildPhases = (
+				8D1107290486CEB800E47090 /* Resources */,
+				8D11072C0486CEB800E47090 /* Sources */,
+				8D11072E0486CEB800E47090 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Pneumonia;
+			productInstallPath = "$(HOME)/Applications";
+			productName = Pneumonia;
+			productReference = 8D1107320486CEB800E47090 /* Pneumonia.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = NSPwn;
+			};
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Pneumonia" */;
+			compatibilityVersion = "Xcode 3.1";
+			hasScannedForEncodings = 1;
+			mainGroup = 29B97314FDCFA39411CA2CEA /* Pneumonia */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8D1107260486CEB800E47090 /* Pneumonia */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8D1107290486CEB800E47090 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A45670E11E7CFBD0087C752 /* Devices.plist in Resources */,
+				2A45670F11E7CFBD0087C752 /* InfoPlist.strings in Resources */,
+				2A45671011E7CFBD0087C752 /* MainMenu.xib in Resources */,
+				2A45671111E7CFBD0087C752 /* gray-apple-icon.png in Resources */,
+				2A45671211E7CFBD0087C752 /* iphone_sn0w.png in Resources */,
+				2A45671511E7CFD20087C752 /* Pneumonia.icns in Resources */,
+				2A45672511E7D2730087C752 /* xpwntool in Resources */,
+				2A06FBF811EBB2B0006D924A /* iPhone2,1 in Resources */,
+				2A06FBF911EBB2B0006D924A /* iPod2,1 in Resources */,
+				2A06FBFA11EBB2B0006D924A /* iPod3,1 in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8D11072C0486CEB800E47090 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D11072D0486CEB800E47090 /* main.m in Sources */,
+				2A45670411E7CFA70087C752 /* PAddons.m in Sources */,
+				2A45670511E7CFA70087C752 /* PController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		2A45670811E7CFBD0087C752 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2A45670911E7CFBD0087C752 /* English */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		2A45670A11E7CFBD0087C752 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2A45670B11E7CFBD0087C752 /* English */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C01FCF4B08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Frameworks\"",
+				);
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Pneumonia_Prefix.pch;
+				INFOPLIST_FILE = "Resources/Pneumonia-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				PRODUCT_NAME = Pneumonia;
+			};
+			name = Debug;
+		};
+		C01FCF4C08A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../iDeviceUtil/build/Debug\"",
+					"\"$(SRCROOT)/Frameworks\"",
+				);
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Pneumonia_Prefix.pch;
+				INFOPLIST_FILE = "Resources/Pneumonia-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				PRODUCT_NAME = Pneumonia;
+			};
+			name = Release;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_VERSION = 4.0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.4;
+				"SDKROOT[arch=x86_64]" = macosx10.5;
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = 4.0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.4;
+				"SDKROOT[arch=x86_64]" = macosx10.5;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "Pneumonia" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4B08A954540054247B /* Debug */,
+				C01FCF4C08A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Pneumonia" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}

@@ -1,3 +1,5 @@
 .DS_Store
 /build
-/Pneumonia.xcodeproj
+/Pneumonia.xcodeproj/*.pbxuser
+/Pneumonia.xcodeproj/*.mode*
+/Pneumonia.xcodeproj/*.perspective*

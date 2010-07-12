@@ -25,7 +25,7 @@ NSString *PBIV = @"iv";
 NSString *PBKey = @"key";
 NSString *PBTarget = @"target";
 NSString *PBPath = @"path";
-NSString *PBEncrypt = @"encrypt"
+NSString *PBEncrypt = @"encrypt";
 
 //Choose Info
 NSString * const PCISender = @"sender";
@@ -36,12 +36,25 @@ NSString * const PCIDeviceFirmwareError = @"This firmware matches the other";
 NSString * const PCIDeviceFirmwareFoundError = @"This firmware is not supported";
 NSString * const PCIDeviceFirmwareValidationError = @"This firmware is not valid";
 
+//Gets rid of build warnings
+@protocol NSFileManagerProtocol <NSObject>
+- (BOOL)createDirectoryAtPath:(NSString *)path withIntermediateDirectories:(BOOL)createIntermediates attributes:(NSDictionary *)attributes error:(NSError **)error;
+- (BOOL)createDirectoryAtPath:(NSString *)path attributes:(NSDictionary *)attributes;
+
+- (BOOL)removeItemAtPath:(NSString *)path error:(NSError **)error;
+- (BOOL)removeFileAtPath:(NSString *)path handler:(id)handler;
+
+- (BOOL)moveItemAtPath:(NSString *)srcPath toPath:(NSString *)dstPath error:(NSError **)error;
+- (BOOL)movePath:(NSString *)source toPath:(NSString *)destination handler:(id)handler;
+@end
+
+
 @implementation PController
 - (void)awakeFromNib {
 	printf("Pneumonia - Copyright NSPwn.com - Application by GreySyntax & GRMrGecko\n\n");
 	devicesDic = [[NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Devices" ofType:@"plist"]] retain];
 	
-	NSFileManager *manager = [NSFileManager defaultManager];
+	NSFileManager<NSFileManagerProtocol> *manager = [NSFileManager defaultManager];
 	if (![manager fileExistsAtPath:[PApplicationSupport stringByExpandingTildeInPath]]) {
 		if ([manager respondsToSelector:@selector(createDirectoryAtPath:attributes:)]) {
 			[manager createDirectoryAtPath:[PApplicationSupport stringByExpandingTildeInPath] attributes:nil];
@@ -256,7 +269,7 @@ NSString * const PCIDeviceFirmwareValidationError = @"This firmware is not valid
 
 - (void)extractAndPatch {
 	NSAutoreleasePool *pool = [NSAutoreleasePool new];
-	NSFileManager *manager = [NSFileManager defaultManager];
+	NSFileManager<NSFileManagerProtocol> *manager = [NSFileManager defaultManager];
 	//Stock
 	NSString *stockPath = [[PApplicationSupport stringByExpandingTildeInPath] stringByAppendingPathComponent:stockFirmwareMD5];
 	if (![manager fileExistsAtPath:stockPath]) {
@@ -291,6 +304,9 @@ NSString * const PCIDeviceFirmwareValidationError = @"This firmware is not valid
 		double increasement = 1.0/(double)[[stockFirmwareDic objectForKey:PBFiles] count];
 		for (int i=0; i<[[stockFirmwareDic objectForKey:PBFiles] count]; i++) {
 			NSDictionary *file = [[stockFirmwareDic objectForKey:PBFiles] objectAtIndex:i];
+			NSString *patchFile = [[[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:[deviceDic objectForKey:PBID]]
+								    stringByAppendingPathComponent:[stockFirmwareDic objectForKey:PBID]]
+								   stringByAppendingPathComponent:[file objectForKey:PBPatch]];
 			
 			if (![[file objectForKey:PBKey] isEqual:@""] && ![[file objectForKey:PBIV] isEqual:@""]) {
 				[self xpwnDecrypt:[PTMP stringByAppendingPathComponent:[file objectForKey:PBPath]]
@@ -352,8 +368,10 @@ NSString * const PCIDeviceFirmwareValidationError = @"This firmware is not valid
 		[NSThread sleepUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.5]];
 		double increasement = 1.0/(double)[[customFirmwareDic objectForKey:PBFiles] count];
 		for (int i=0; i<[[customFirmwareDic objectForKey:PBFiles] count]; i++) {
-			
 			NSDictionary *file = [[stockFirmwareDic objectForKey:PBFiles] objectAtIndex:i];
+			NSString *patchFile = [[[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:[deviceDic objectForKey:PBID]]
+									stringByAppendingPathComponent:[stockFirmwareDic objectForKey:PBID]]
+								   stringByAppendingPathComponent:[file objectForKey:PBPatch]];
 			
 			if (![[file objectForKey:PBKey] isEqual:@""] && ![[file objectForKey:PBIV] isEqual:@""]) {
 				[self xpwnDecrypt:[PTMP stringByAppendingPathComponent:[file objectForKey:PBPath]]
@@ -410,7 +428,7 @@ NSString * const PCIDeviceFirmwareValidationError = @"This firmware is not valid
 	BOOL result = YES;
 	
 	NSTask* theTask = [[NSTask alloc] init];
-	[theTask setLaunchPath:[[NSBundle mainBundle] pathForResource:@"xpwntool" ofType:nil]];
+	[theTask setLaunchPath:[[NSBundle mainBundle] pathForResource:@"xpwntool" ofType:@""]];
 	[theTask setCurrentDirectoryPath:[[NSBundle mainBundle] resourcePath]];
 	[theTask setArguments:[NSArray arrayWithObjects:file, newFile, @"-k", key, @"-iv", iv, nil]];
 	[theTask launch];
