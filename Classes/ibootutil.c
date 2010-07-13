@@ -1,4 +1,46 @@
 #include "ibootutil.h"
+#include <IOKit/IOKitLib.h>
+#include <IOKit/usb/USB.h>
+#include <IOKit/usb/USBSpec.h>
+#include <IOKit/usb/IOUSBLib.h>
+#include <IOKit/IOCFPlugIn.h>
+#include <sys/stat.h>
+
+struct iBootUSBConnection {
+	io_service_t usbService;
+	IOUSBDeviceInterface **deviceHandle;
+	IOUSBInterfaceInterface **interfaceHandle;
+	CFStringRef name, serial;
+	UInt8 responsePipeRef;
+	unsigned int idProduct, open;
+};
+
+#define RECOVERY 0x1281
+#define DFU 0x1227
+#define VENDOR_ID 0x05AC
+
+#define REQUEST_COMMAND 0x40
+#define REQUEST_FILE 0x21
+#define REQUEST_STATUS 0xA1
+
+#ifndef kUSBProductString
+#define kUSBProductString "USB Product Name"
+#endif
+
+#ifndef kUSBSerialNumberString
+#define kUSBSerialNumberString "USB Serial Number"
+#endif
+
+enum {
+	kAppleVendorID		= 0x05AC
+};
+
+static int verbosity = 0;
+//static int timeout=1000;
+#define ibootutil_printf(...) { \
+if(verbosity != 0) \
+printf(__VA_ARGS__); \
+}
 
 void iDevice_print(iBootUSBConnection connection) {
 	if(connection != NULL && verbosity != 0) {
