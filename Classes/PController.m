@@ -8,6 +8,7 @@
 
 #import "PController.h"
 #import "PAddons.h"
+#import "ibootutil.h"
 
 NSString * const PExtract = @"extract";
 NSString * const PApplicationSupport = @"~/Library/Application Support/Pneumonia/";
