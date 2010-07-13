@@ -17,7 +17,6 @@ struct iBootUSBConnection {
 
 #define RECOVERY 0x1281
 #define DFU 0x1227
-#define VENDOR_ID 0x05AC
 
 #define REQUEST_COMMAND 0x40
 #define REQUEST_FILE 0x21
