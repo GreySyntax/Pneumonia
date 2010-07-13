@@ -9,23 +9,24 @@
 #import "PController.h"
 #import "PAddons.h"
 
-NSString * const PTMP = @"/tmp/nspwn_ipsw";
+NSString * const PExtract = @"extract";
 NSString * const PApplicationSupport = @"~/Library/Application Support/Pneumonia/";
 
 //Bundle Keys
-NSString *PBName = @"name";
-NSString *PBID = @"id";
-NSString *PBFirmwares = @"firmwares";
-NSString *PBStock = @"stock";
-NSString *PBMD5 = @"md5";
-NSString *PBFVersion = @"version";
-NSString *PBFiles = @"files";
-NSString *PBPatch = @"patch";
-NSString *PBIV = @"iv";
-NSString *PBKey = @"key";
-NSString *PBTarget = @"target";
-NSString *PBPath = @"path";
-NSString *PBEncrypt = @"encrypt";
+NSString * const PBName = @"name";
+NSString * const PBID = @"id";
+NSString * const PBFirmwares = @"firmwares";
+NSString * const PBStock = @"stock";
+NSString * const PBCustom = @"custom";
+NSString * const PBMD5 = @"md5";
+NSString * const PBFVersion = @"version";
+NSString * const PBFiles = @"files";
+NSString * const PBPatch = @"patch";
+NSString * const PBIV = @"iv";
+NSString * const PBKey = @"key";
+NSString * const PBTarget = @"target";
+NSString * const PBPath = @"path";
+NSString * const PBEncrypt = @"encrypt";
 
 //Choose Info
 NSString * const PCISender = @"sender";
@@ -43,6 +44,9 @@ NSString * const PCIDeviceFirmwareValidationError = @"This firmware is not valid
 
 - (BOOL)removeItemAtPath:(NSString *)path error:(NSError **)error;
 - (BOOL)removeFileAtPath:(NSString *)path handler:(id)handler;
+
+- (BOOL)copyItemAtPath:(NSString *)srcPath toPath:(NSString *)dstPath error:(NSError **)error;
+- (BOOL)copyPath:(NSString *)source toPath:(NSString *)destination handler:(id)handler;
 
 - (BOOL)moveItemAtPath:(NSString *)srcPath toPath:(NSString *)dstPath error:(NSError **)error;
 - (BOOL)movePath:(NSString *)source toPath:(NSString *)destination handler:(id)handler;
@@ -270,6 +274,14 @@ NSString * const PCIDeviceFirmwareValidationError = @"This firmware is not valid
 - (void)extractAndPatch {
 	NSAutoreleasePool *pool = [NSAutoreleasePool new];
 	NSFileManager<NSFileManagerProtocol> *manager = [NSFileManager defaultManager];
+	NSString *extract = [[PApplicationSupport stringByExpandingTildeInPath] stringByAppendingPathComponent:PExtract];
+	if ([manager fileExistsAtPath:extract]) {
+		if ([manager respondsToSelector:@selector(removeFileAtPath:handler:)]) {
+			[manager removeFileAtPath:extract handler:nil];
+		} else {
+			[manager removeItemAtPath:extract error:nil];
+		}
+	}
 	//Stock
 	NSString *stockPath = [[PApplicationSupport stringByExpandingTildeInPath] stringByAppendingPathComponent:stockFirmwareMD5];
 	if (![manager fileExistsAtPath:stockPath]) {
@@ -280,18 +292,18 @@ NSString * const PCIDeviceFirmwareValidationError = @"This firmware is not valid
 		}
 		
 		[S2Status setStringValue:[NSString stringWithFormat:@"Extracting %@ Firmware", [stockFirmwareDic objectForKey:PBFVersion]]];
-		if (![self unzip:stockFirmware toPath:PTMP]) {
+		if (![self unzip:stockFirmware toPath:extract]) {
 			NSAlert *theAlert = [[NSAlert new] autorelease];
 			[theAlert addButtonWithTitle:@"Quit"];
 			[theAlert setMessageText:@"Error"];
 			[theAlert setInformativeText:[NSString stringWithFormat:@"Firmware %@ was unable to be extracted", [stockFirmwareDic objectForKey:PBFVersion]]];
 			[theAlert setAlertStyle:2];
 			[theAlert runModal];
-			if ([manager fileExistsAtPath:PTMP]) {
+			if ([manager fileExistsAtPath:extract]) {
 				if ([manager respondsToSelector:@selector(removeFileAtPath:handler:)]) {
-					[manager removeFileAtPath:PTMP handler:nil];
+					[manager removeFileAtPath:extract handler:nil];
 				} else {
-					[manager removeItemAtPath:PTMP error:nil];
+					[manager removeItemAtPath:extract error:nil];
 				}
 			}
 			[[NSApplication sharedApplication] terminate:self];
@@ -304,18 +316,39 @@ NSString * const PCIDeviceFirmwareValidationError = @"This firmware is not valid
 		double increasement = 1.0/(double)[[stockFirmwareDic objectForKey:PBFiles] count];
 		for (int i=0; i<[[stockFirmwareDic objectForKey:PBFiles] count]; i++) {
 			NSDictionary *file = [[stockFirmwareDic objectForKey:PBFiles] objectAtIndex:i];
-			NSString *patchFile = [[[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:[deviceDic objectForKey:PBID]]
-								    stringByAppendingPathComponent:[stockFirmwareDic objectForKey:PBID]]
-								   stringByAppendingPathComponent:[file objectForKey:PBPatch]];
 			
 			if (![[file objectForKey:PBKey] isEqual:@""] && ![[file objectForKey:PBIV] isEqual:@""]) {
-				[self xpwnDecrypt:[PTMP stringByAppendingPathComponent:[file objectForKey:PBPath]]
+				[S2Status setStringValue:[NSString stringWithFormat:@"Decrypting %@", [file objectForKey:PBName]]];
+				[self xpwnDecrypt:[extract stringByAppendingPathComponent:[file objectForKey:PBPath]]
 						  newFile:[stockPath stringByAppendingPathComponent:[file objectForKey:PBTarget]]
 							  key:[file objectForKey:PBKey]
 							   iv:[file objectForKey:PBIV]];
+			} else {
+				[S2Status setStringValue:[NSString stringWithFormat:@"Copying %@", [file objectForKey:PBName]]];
+				if ([manager respondsToSelector:@selector(copyPath:toPath:handler:)]) {
+					[manager copyPath:[extract stringByAppendingPathComponent:[file objectForKey:PBPath]]
+							   toPath:[stockPath stringByAppendingPathComponent:[file objectForKey:PBTarget]]
+							  handler:nil];
+				} else {
+					[manager copyItemAtPath:[extract stringByAppendingPathComponent:[file objectForKey:PBPath]]
+									 toPath:[stockPath stringByAppendingPathComponent:[file objectForKey:PBTarget]]
+									  error:nil];
+				}
+			}
+			
+			if (![[file objectForKey:PBPatch] isEqual:@""]) {
+				[S2Status setStringValue:[NSString stringWithFormat:@"Patching %@", [file objectForKey:PBName]]];
+				NSString *patchFile = [[[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:[deviceDic objectForKey:PBID]]
+										stringByAppendingPathComponent:[stockFirmwareDic objectForKey:PBID]]
+									   stringByAppendingPathComponent:[file objectForKey:PBPatch]];
+				
+				[self bspatch:[stockPath stringByAppendingPathComponent:[file objectForKey:PBTarget]]
+					  newFile:[stockPath stringByAppendingPathComponent:[file objectForKey:PBTarget]]
+						patch:patchFile];
 			}
 			
 			if ([[file objectForKey:PBEncrypt] boolValue]) {
+				[S2Status setStringValue:[NSString stringWithFormat:@"Encrypting %@", [file objectForKey:PBName]]];
 				//TODO xpwntool encrypt
 			}
 			
@@ -324,11 +357,11 @@ NSString * const PCIDeviceFirmwareValidationError = @"This firmware is not valid
 		
 		[S2Progress setDoubleValue:2.0];
 		[S2Status setStringValue:[NSString stringWithFormat:@"Cleaning %@ Firmware", [stockFirmwareDic objectForKey:PBFVersion]]];
-		if ([manager fileExistsAtPath:PTMP]) {
+		if ([manager fileExistsAtPath:extract]) {
 			if ([manager respondsToSelector:@selector(removeFileAtPath:handler:)]) {
-				[manager removeFileAtPath:PTMP handler:nil];
+				[manager removeFileAtPath:extract handler:nil];
 			} else {
-				[manager removeItemAtPath:PTMP error:nil];
+				[manager removeItemAtPath:extract error:nil];
 			}
 		}
 		[NSThread sleepUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.5]];
@@ -345,18 +378,18 @@ NSString * const PCIDeviceFirmwareValidationError = @"This firmware is not valid
 		
 		[S2Progress setDoubleValue:3.0];
 		[S2Status setStringValue:[NSString stringWithFormat:@"Extracting %@ Firmware", [customFirmwareDic objectForKey:PBFVersion]]];
-		if (![self unzip:customFirmware toPath:PTMP]) {
+		if (![self unzip:customFirmware toPath:extract]) {
 			NSAlert *theAlert = [[NSAlert new] autorelease];
 			[theAlert addButtonWithTitle:@"Quit"];
 			[theAlert setMessageText:@"Error"];
 			[theAlert setInformativeText:[NSString stringWithFormat:@"Firmware %@ was unable to be extracted", [customFirmwareDic objectForKey:PBFVersion]]];
 			[theAlert setAlertStyle:2];
 			[theAlert runModal];
-			if ([manager fileExistsAtPath:PTMP]) {
+			if ([manager fileExistsAtPath:extract]) {
 				if ([manager respondsToSelector:@selector(removeFileAtPath:handler:)]) {
-					[manager removeFileAtPath:PTMP handler:nil];
+					[manager removeFileAtPath:extract handler:nil];
 				} else {
-					[manager removeItemAtPath:PTMP error:nil];
+					[manager removeItemAtPath:extract error:nil];
 				}
 			}
 			[[NSApplication sharedApplication] terminate:self];
@@ -368,19 +401,40 @@ NSString * const PCIDeviceFirmwareValidationError = @"This firmware is not valid
 		[NSThread sleepUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.5]];
 		double increasement = 1.0/(double)[[customFirmwareDic objectForKey:PBFiles] count];
 		for (int i=0; i<[[customFirmwareDic objectForKey:PBFiles] count]; i++) {
-			NSDictionary *file = [[stockFirmwareDic objectForKey:PBFiles] objectAtIndex:i];
-			NSString *patchFile = [[[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:[deviceDic objectForKey:PBID]]
-									stringByAppendingPathComponent:[stockFirmwareDic objectForKey:PBID]]
-								   stringByAppendingPathComponent:[file objectForKey:PBPatch]];
+			NSDictionary *file = [[customFirmwareDic objectForKey:PBFiles] objectAtIndex:i];
 			
 			if (![[file objectForKey:PBKey] isEqual:@""] && ![[file objectForKey:PBIV] isEqual:@""]) {
-				[self xpwnDecrypt:[PTMP stringByAppendingPathComponent:[file objectForKey:PBPath]]
-						  newFile:[stockPath stringByAppendingPathComponent:[file objectForKey:PBTarget]]
+				[S2Status setStringValue:[NSString stringWithFormat:@"Decrypting %@", [file objectForKey:PBName]]];
+				[self xpwnDecrypt:[extract stringByAppendingPathComponent:[file objectForKey:PBPath]]
+						  newFile:[customPath stringByAppendingPathComponent:[file objectForKey:PBTarget]]
 							  key:[file objectForKey:PBKey]
 							   iv:[file objectForKey:PBIV]];
+			} else {
+				[S2Status setStringValue:[NSString stringWithFormat:@"Copying %@", [file objectForKey:PBName]]];
+				if ([manager respondsToSelector:@selector(copyPath:toPath:handler:)]) {
+					[manager copyPath:[extract stringByAppendingPathComponent:[file objectForKey:PBPath]]
+							   toPath:[customPath stringByAppendingPathComponent:[file objectForKey:PBTarget]]
+							  handler:nil];
+				} else {
+					[manager copyItemAtPath:[extract stringByAppendingPathComponent:[file objectForKey:PBPath]]
+									 toPath:[customPath stringByAppendingPathComponent:[file objectForKey:PBTarget]]
+									  error:nil];
+				}
+			}
+			
+			if (![[file objectForKey:PBPatch] isEqual:@""]) {
+				[S2Status setStringValue:[NSString stringWithFormat:@"Patching %@", [file objectForKey:PBName]]];
+				NSString *patchFile = [[[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:[deviceDic objectForKey:PBID]]
+										stringByAppendingPathComponent:[customFirmwareDic objectForKey:PBID]]
+									   stringByAppendingPathComponent:[file objectForKey:PBPatch]];
+				
+				[self bspatch:[customPath stringByAppendingPathComponent:[file objectForKey:PBTarget]]
+					  newFile:[customPath stringByAppendingPathComponent:[file objectForKey:PBTarget]]
+						patch:patchFile];
 			}
 			
 			if ([[file objectForKey:PBEncrypt] boolValue]) {
+				[S2Status setStringValue:[NSString stringWithFormat:@"Encrypting %@", [file objectForKey:PBName]]];
 				//TODO xpwntool encrypt
 			}
 			
@@ -389,15 +443,28 @@ NSString * const PCIDeviceFirmwareValidationError = @"This firmware is not valid
 		
 		[S2Progress setDoubleValue:5.0];
 		[S2Status setStringValue:[NSString stringWithFormat:@"Cleaning %@ Firmware", [customFirmwareDic objectForKey:PBFVersion]]];
-		if ([manager fileExistsAtPath:PTMP]) {
+		if ([manager fileExistsAtPath:extract]) {
 			if ([manager respondsToSelector:@selector(removeFileAtPath:handler:)]) {
-				[manager removeFileAtPath:PTMP handler:nil];
+				[manager removeFileAtPath:extract handler:nil];
 			} else {
-				[manager removeItemAtPath:PTMP error:nil];
+				[manager removeItemAtPath:extract error:nil];
 			}
 		}
 		[NSThread sleepUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.5]];
 	}
+	
+	//Add firmware to previous firmwares for reloading later.
+	NSDictionary *stock = [NSDictionary dictionaryWithObjectsAndKeys:[stockFirmwareDic objectForKey:PBFVersion], PBFVersion, [stockFirmwareDic objectForKey:PBID], PBID, stockFirmwareMD5, PBMD5, nil];
+	NSDictionary *custom = [NSDictionary dictionaryWithObjectsAndKeys:[customFirmwareDic objectForKey:PBFVersion], PBFVersion, [customFirmwareDic objectForKey:PBID], PBID, customFirmwareMD5, PBMD5, nil];
+	NSDictionary *firmwareInfo = [NSDictionary dictionaryWithObjectsAndKeys:[deviceDic objectForKey:PBName], PBName, [deviceDic objectForKey:PBID], PBID, stock, PBStock, custom, PBCustom, nil];
+	NSMutableArray *firmwares;
+	if ([[NSUserDefaults standardUserDefaults] objectForKey:PBFirmwares]) {
+		firmwares = [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] objectForKey:PBFirmwares]];
+	} else {
+		firmwares = [NSMutableArray array];
+	}
+	[firmwares addObject:firmwareInfo];
+	[[NSUserDefaults standardUserDefaults] setObject:firmwares forKey:PBFirmwares];
 	
 	[S2Progress setDoubleValue:6.0];
 	[S2Status setStringValue:@"Done"];
@@ -412,9 +479,9 @@ NSString * const PCIDeviceFirmwareValidationError = @"This firmware is not valid
 	BOOL result = YES;
 	
 	NSTask* theTask = [[NSTask alloc] init];
-	[theTask setLaunchPath:@"/usr/bin/ditto"];
+	[theTask setLaunchPath:@"/usr/bin/unzip"];
 	[theTask setCurrentDirectoryPath:[@"~/" stringByExpandingTildeInPath]];
-	[theTask setArguments:[NSArray arrayWithObjects:@"-xk", path, toPath, nil]];
+	[theTask setArguments:[NSArray arrayWithObjects:@"-o", path, @"-d", toPath, nil]];
 	[theTask launch];
 	[theTask waitUntilExit];
 	result = ([theTask terminationStatus]==0);
@@ -431,6 +498,21 @@ NSString * const PCIDeviceFirmwareValidationError = @"This firmware is not valid
 	[theTask setLaunchPath:[[NSBundle mainBundle] pathForResource:@"xpwntool" ofType:@""]];
 	[theTask setCurrentDirectoryPath:[[NSBundle mainBundle] resourcePath]];
 	[theTask setArguments:[NSArray arrayWithObjects:file, newFile, @"-k", key, @"-iv", iv, nil]];
+	[theTask launch];
+	[theTask waitUntilExit];
+	result = ([theTask terminationStatus] == 0);
+	[theTask release];
+	
+	return result;
+}
+
+- (BOOL)bspatch:(NSString *)file newFile:(NSString *)newFile patch:(NSString *)patch {
+	BOOL result = YES;
+	
+	NSTask* theTask = [[NSTask alloc] init];
+	[theTask setLaunchPath:@"/usr/bin/bspatch"];
+	[theTask setCurrentDirectoryPath:[[NSBundle mainBundle] resourcePath]];
+	[theTask setArguments:[NSArray arrayWithObjects:file, newFile, patch, nil]];
 	[theTask launch];
 	[theTask waitUntilExit];
 	result = ([theTask terminationStatus] == 0);

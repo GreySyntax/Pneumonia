@@ -49,4 +49,5 @@
 //Utilities
 - (BOOL)unzip:(NSString *)path toPath:(NSString *)toPath;
 - (BOOL)xpwnDecrypt:(NSString *)file newFile:(NSString *)newFile key:(NSString *)key iv:(NSString *)iv;
+- (BOOL)bspatch:(NSString *)file newFile:(NSString *)newFile patch:(NSString *)patch;
 @end

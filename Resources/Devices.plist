@@ -9,7 +9,56 @@
 			<key>8A293</key>
 			<dict>
 				<key>files</key>
-				<array/>
+				<array>
+					<dict>
+						<key>encrypt</key>
+						<false/>
+						<key>patch</key>
+						<string></string>
+						<key>iv</key>
+						<string></string>
+						<key>key</key>
+						<string></string>
+						<key>target</key>
+						<string>kernel</string>
+						<key>path</key>
+						<string>/kernelcache.release.n18</string>
+						<key>name</key>
+						<string>Kernel</string>
+					</dict>
+					<dict>
+						<key>encrypt</key>
+						<false/>
+						<key>patch</key>
+						<string></string>
+						<key>iv</key>
+						<string></string>
+						<key>key</key>
+						<string></string>
+						<key>target</key>
+						<string>devicetree</string>
+						<key>path</key>
+						<string>/Firmware/all_flash/all_flash.n18ap.production/DeviceTree.n18ap.img3</string>
+						<key>name</key>
+						<string>Device Tree</string>
+					</dict>
+					<dict>
+						<key>encrypt</key>
+						<false/>
+						<key>patch</key>
+						<string></string>
+						<key>iv</key>
+						<string></string>
+						<key>key</key>
+						<string></string>
+						<key>target</key>
+						<string>ibec</string>
+						<key>path</key>
+						<string>/Firmware/dfu/iBEC.n18ap.RELEASE.dfu</string>
+						<key>name</key>
+						<string>iBec</string>
+					</dict>
+				</array>
 				<key>stock</key>
 				<false/>
 				<key>md5</key>
@@ -22,7 +71,24 @@
 			<key>7D11</key>
 			<dict>
 				<key>files</key>
-				<array/>
+				<array>
+					<dict>
+						<key>encrypt</key>
+						<false/>
+						<key>patch</key>
+						<string>iboot.patch</string>
+						<key>iv</key>
+						<string>6e7dc46c6a9cf573dda9af515c1b50ac</string>
+						<key>key</key>
+						<string>eabfe2fc4bad7f97c090ed021e7fd80a7463251c4919a3c637d2a0c529b79d5a</string>
+						<key>target</key>
+						<string>iboot.payload</string>
+						<key>path</key>
+						<string>/Firmware/all_flash/all_flash.n18ap.production/iBoot.n18ap.RELEASE.img3</string>
+						<key>name</key>
+						<string>iBoot</string>
+					</dict>
+				</array>
 				<key>stock</key>
 				<true/>
 				<key>md5</key>
@@ -35,7 +101,7 @@
 		</dict>
 		<key>name</key>
 		<string>iPod Touch 3G</string>
-		<key>New item</key>
+		<key>id</key>
 		<string>iPod3,1</string>
 	</dict>
 	<key>iPod2,1</key>
@@ -45,11 +111,60 @@
 			<key>8A293</key>
 			<dict>
 				<key>files</key>
-				<array/>
+				<array>
+					<dict>
+						<key>encrypt</key>
+						<false/>
+						<key>patch</key>
+						<string></string>
+						<key>iv</key>
+						<string></string>
+						<key>key</key>
+						<string></string>
+						<key>target</key>
+						<string>kernel</string>
+						<key>path</key>
+						<string>/kernelcache.release.n72</string>
+						<key>name</key>
+						<string>Kernel</string>
+					</dict>
+					<dict>
+						<key>encrypt</key>
+						<false/>
+						<key>patch</key>
+						<string></string>
+						<key>iv</key>
+						<string></string>
+						<key>key</key>
+						<string></string>
+						<key>target</key>
+						<string>devicetree</string>
+						<key>path</key>
+						<string>/Firmware/all_flash/all_flash.n72ap.production/DeviceTree.n72ap.img3</string>
+						<key>name</key>
+						<string>Device Tree</string>
+					</dict>
+					<dict>
+						<key>encrypt</key>
+						<false/>
+						<key>patch</key>
+						<string></string>
+						<key>iv</key>
+						<string></string>
+						<key>key</key>
+						<string></string>
+						<key>target</key>
+						<string>ibec</string>
+						<key>path</key>
+						<string>/Firmware/dfu/iBEC.n72ap.RELEASE.dfu</string>
+						<key>name</key>
+						<string>iBec</string>
+					</dict>
+				</array>
 				<key>stock</key>
 				<false/>
 				<key>md5</key>
-				<string></string>
+				<string>41dd8ab40159a13d7be42cd7e5f3a479</string>
 				<key>version</key>
 				<string>4.0</string>
 				<key>id</key>
@@ -58,11 +173,28 @@
 			<key>7D11</key>
 			<dict>
 				<key>files</key>
-				<array/>
+				<array>
+					<dict>
+						<key>encrypt</key>
+						<false/>
+						<key>patch</key>
+						<string>iboot.patch</string>
+						<key>iv</key>
+						<string>5e421f8ce8c811311bbbb8a734ec07ce</string>
+						<key>key</key>
+						<string>191b6846543d7026b6f0d5247f030588</string>
+						<key>target</key>
+						<string>iboot.payload</string>
+						<key>path</key>
+						<string>/Firmware/all_flash/all_flash.n72ap.production/iBoot.n72ap.RELEASE.img3</string>
+						<key>name</key>
+						<string>iBoot</string>
+					</dict>
+				</array>
 				<key>stock</key>
 				<true/>
 				<key>md5</key>
-				<string></string>
+				<string>35c66be376201082a005f0a289f26a65</string>
 				<key>version</key>
 				<string>3.1.2</string>
 				<key>id</key>
@@ -71,7 +203,7 @@
 		</dict>
 		<key>name</key>
 		<string>iPod Touch 2G</string>
-		<key>New item</key>
+		<key>id</key>
 		<string>iPod2,1</string>
 	</dict>
 	<key>iPhone2,1</key>
@@ -83,6 +215,8 @@
 				<key>files</key>
 				<array>
 					<dict>
+						<key>encrypt</key>
+						<false/>
 						<key>patch</key>
 						<string></string>
 						<key>iv</key>
@@ -90,7 +224,7 @@
 						<key>key</key>
 						<string></string>
 						<key>target</key>
-						<string>kernel.40</string>
+						<string>kernel</string>
 						<key>path</key>
 						<string>/kernelcache.release.n88</string>
 						<key>name</key>
@@ -106,11 +240,27 @@
 						<key>key</key>
 						<string></string>
 						<key>target</key>
-						<string>devtree.40</string>
+						<string>devicetree</string>
 						<key>path</key>
 						<string>/Firmware/all_flash/all_flash.n88ap.production/DeviceTree.n88ap.img3</string>
 						<key>name</key>
 						<string>Device Tree</string>
+					</dict>
+					<dict>
+						<key>encrypt</key>
+						<false/>
+						<key>patch</key>
+						<string></string>
+						<key>iv</key>
+						<string></string>
+						<key>key</key>
+						<string></string>
+						<key>target</key>
+						<string>ibec</string>
+						<key>path</key>
+						<string>/Firmware/dfu/iBEC.n88ap.RELEASE.dfu</string>
+						<key>name</key>
+						<string>iBec</string>
 					</dict>
 				</array>
 				<key>stock</key>
@@ -128,23 +278,7 @@
 				<array>
 					<dict>
 						<key>encrypt</key>
-						<true/>
-						<key>patch</key>
-						<string>ibec.patch</string>
-						<key>iv</key>
-						<string>f9aac54a68b2fad383ca759057ad13df</string>
-						<key>key</key>
-						<string>ec66b545ca47dc353f3f7595a80ffa74d54ca5bf586cfe769d70d117bf196073</string>
-						<key>target</key>
-						<string>ibec.40</string>
-						<key>path</key>
-						<string>/Firmware/dfu/iBEC.n88ap.RELEASE.dfu</string>
-						<key>name</key>
-						<string>iBEC</string>
-					</dict>
-					<dict>
-						<key>encrypt</key>
-						<true/>
+						<false/>
 						<key>patch</key>
 						<string>iboot.patch</string>
 						<key>iv</key>
