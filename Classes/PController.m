@@ -271,6 +271,7 @@ NSString * const PCIDeviceFirmwareValidationError = @"This firmware is not valid
 	[NSThread detachNewThreadSelector:@selector(extractAndPatch) toTarget:self withObject:nil];
 }
 
+//Step 2: Extract and Patch Firmware.
 - (void)extractAndPatch {
 	NSAutoreleasePool *pool = [NSAutoreleasePool new];
 	NSFileManager<NSFileManagerProtocol> *manager = [NSFileManager defaultManager];
@@ -454,30 +455,44 @@ NSString * const PCIDeviceFirmwareValidationError = @"This firmware is not valid
 	}
 	
 	//Add firmware to previous firmwares for reloading later.
-	NSDictionary *stock = [NSDictionary dictionaryWithObjectsAndKeys:[stockFirmwareDic objectForKey:PBFVersion], PBFVersion, [stockFirmwareDic objectForKey:PBID], PBID, stockFirmwareMD5, PBMD5, nil];
-	NSDictionary *custom = [NSDictionary dictionaryWithObjectsAndKeys:[customFirmwareDic objectForKey:PBFVersion], PBFVersion, [customFirmwareDic objectForKey:PBID], PBID, customFirmwareMD5, PBMD5, nil];
-	NSDictionary *firmwareInfo = [NSDictionary dictionaryWithObjectsAndKeys:[deviceDic objectForKey:PBName], PBName, [deviceDic objectForKey:PBID], PBID, stock, PBStock, custom, PBCustom, nil];
 	NSMutableArray *firmwares;
 	if ([[NSUserDefaults standardUserDefaults] objectForKey:PBFirmwares]) {
 		firmwares = [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] objectForKey:PBFirmwares]];
 	} else {
 		firmwares = [NSMutableArray array];
 	}
-	[firmwares addObject:firmwareInfo];
-	[[NSUserDefaults standardUserDefaults] setObject:firmwares forKey:PBFirmwares];
+	BOOL shouldSave = YES;
+	for (int i=0; i<[firmwares count]; i++) {
+		if ([[[[firmwares objectAtIndex:i] objectForKey:PBStock] objectForKey:PBMD5] isEqual:stockFirmwareMD5] &&
+			[[[[firmwares objectAtIndex:i] objectForKey:PBCustom] objectForKey:PBMD5] isEqual:customFirmwareMD5])
+			shouldSave = NO;
+	}
+	if (shouldSave) {
+		NSDictionary *stock = [NSDictionary dictionaryWithObjectsAndKeys:[stockFirmwareDic objectForKey:PBFVersion], PBFVersion, [stockFirmwareDic objectForKey:PBID], PBID, stockFirmwareMD5, PBMD5, nil];
+		NSDictionary *custom = [NSDictionary dictionaryWithObjectsAndKeys:[customFirmwareDic objectForKey:PBFVersion], PBFVersion, [customFirmwareDic objectForKey:PBID], PBID, customFirmwareMD5, PBMD5, nil];
+		NSDictionary *firmwareInfo = [NSDictionary dictionaryWithObjectsAndKeys:[deviceDic objectForKey:PBName], PBName, [deviceDic objectForKey:PBID], PBID, stock, PBStock, custom, PBCustom, nil];
+		
+		[firmwares addObject:firmwareInfo];
+		[[NSUserDefaults standardUserDefaults] setObject:firmwares forKey:PBFirmwares];
+	}
 	
 	[S2Progress setDoubleValue:6.0];
 	[S2Status setStringValue:@"Done"];
-	[NSThread sleepUntilDate:[NSDate dateWithTimeIntervalSinceNow:1]];
-	[stepsView selectTabViewItem:[stepsView tabViewItemAtIndex:2]];
+	[NSThread sleepUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.5]];
+	[self performSelectorOnMainThread:@selector(S2Continue) withObject:nil waitUntilDone:NO];
 	
 	[pool release];
+}
+
+- (void)S2Continue {
+	[stepsView selectTabViewItem:[stepsView tabViewItemAtIndex:2]];
 }
 
 //Utilities
 - (BOOL)unzip:(NSString *)path toPath:(NSString *)toPath {
 	BOOL result = YES;
-	
+
+	//If we really wanted to, we can set up a NSPipe here and make it show progress.
 	NSTask* theTask = [[NSTask alloc] init];
 	[theTask setLaunchPath:@"/usr/bin/unzip"];
 	[theTask setCurrentDirectoryPath:[@"~/" stringByExpandingTildeInPath]];
