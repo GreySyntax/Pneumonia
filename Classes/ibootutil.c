@@ -14,11 +14,20 @@
 #define REQUEST_FILE 0x21
 #define REQUEST_STATUS 0xA1
 
+#ifndef kUSBProductString
+#define kUSBProductString "USB Product Name"
+#endif
+
+#ifndef kUSBSerialNumberString
+#define kUSBSerialNumberString "USB Serial Number"
+#endif
+
 enum {
 	kAppleVendorID		= 0x05AC
 };
 
-static int verbosity = 0, timeout=1000;
+static int verbosity = 0;
+//static int timeout=1000;
 #define ibootutil_printf(...) { \
 if(verbosity != 0) \
 printf(__VA_ARGS__); \
