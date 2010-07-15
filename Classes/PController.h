@@ -40,7 +40,8 @@
 	IBOutlet NSProgressIndicator *S2Progress;
 	
 	//Step 3: Boot or Prepare Device
-	
+	IBOutlet NSButton *S3Boot;
+	IBOutlet NSButton *S3Prep;
 }
 - (BOOL)isError:(NSString *)theString;
 
@@ -48,6 +49,10 @@
 - (void)detectFirmware:(NSDictionary *)info;
 - (IBAction)S1Choose:(id)sender;
 - (IBAction)S1Next:(id)sender;
+
+//Step 3: Boot or Prepare Device
+- (IBAction)S3BootDevice:(id)sender;
+- (IBAction)S3PrepareDevice:(id)sender;
 
 //Utilities
 - (BOOL)unzip:(NSString *)path toPath:(NSString *)toPath;
