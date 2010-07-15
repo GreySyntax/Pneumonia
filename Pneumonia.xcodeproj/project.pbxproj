@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		173767C011EF9397009B35B9 /* Transfer.plist in Resources */ = {isa = PBXBuildFile; fileRef = 173767BF11EF9397009B35B9 /* Transfer.plist */; };
 		2A06FBF811EBB2B0006D924A /* iPhone2,1 in Resources */ = {isa = PBXBuildFile; fileRef = 2A06FBE611EBB2B0006D924A /* iPhone2,1 */; };
 		2A06FBF911EBB2B0006D924A /* iPod2,1 in Resources */ = {isa = PBXBuildFile; fileRef = 2A06FBEC11EBB2B0006D924A /* iPod2,1 */; };
 		2A06FBFA11EBB2B0006D924A /* iPod3,1 in Resources */ = {isa = PBXBuildFile; fileRef = 2A06FBF211EBB2B0006D924A /* iPod3,1 */; };
@@ -29,6 +30,7 @@
 /* Begin PBXFileReference section */
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
+		173767BF11EF9397009B35B9 /* Transfer.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Transfer.plist; sourceTree = "<group>"; };
 		256AC3F00F4B6AF500CF3369 /* Pneumonia_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pneumonia_Prefix.pch; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
@@ -154,6 +156,7 @@
 				2A06FBEC11EBB2B0006D924A /* iPod2,1 */,
 				2A06FBF211EBB2B0006D924A /* iPod3,1 */,
 				2A45672411E7D2730087C752 /* xpwntool */,
+				173767BF11EF9397009B35B9 /* Transfer.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -214,6 +217,7 @@
 				2A06FBF811EBB2B0006D924A /* iPhone2,1 in Resources */,
 				2A06FBF911EBB2B0006D924A /* iPod2,1 in Resources */,
 				2A06FBFA11EBB2B0006D924A /* iPod3,1 in Resources */,
+				173767C011EF9397009B35B9 /* Transfer.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

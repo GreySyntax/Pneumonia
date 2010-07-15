@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>wait</key>
+		<integer>0</integer>
+		<key>command</key>
+		<string></string>
+		<key>exploit</key>
+		<true/>
+		<key>upload</key>
+		<string>iboot.payload</string>
+	</dict>
+	<dict>
+		<key>wait</key>
+		<integer>10</integer>
+		<key>command</key>
+		<string>go</string>
+		<key>exploit</key>
+		<false/>
+		<key>upload</key>
+		<string>ibec.40</string>
+	</dict>
+	<dict>
+		<key>wait</key>
+		<integer>0</integer>
+		<key>command</key>
+		<string>devicetree</string>
+		<key>exploit</key>
+		<false/>
+		<key>upload</key>
+		<string>devtree.40</string>
+	</dict>
+	<dict>
+		<key>wait</key>
+		<integer>0</integer>
+		<key>command</key>
+		<string>bootx</string>
+		<key>exploit</key>
+		<false/>
+		<key>upload</key>
+		<string>kernel.40</string>
+	</dict>
+</array>
+</plist>
