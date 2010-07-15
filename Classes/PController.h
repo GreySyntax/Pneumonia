@@ -38,6 +38,9 @@
 	//Step 2: Extract and Patch Firmware.
 	IBOutlet NSTextField *S2Status;
 	IBOutlet NSProgressIndicator *S2Progress;
+	
+	//Step 3: Boot or Prepare Device
+	
 }
 - (BOOL)isError:(NSString *)theString;
 
