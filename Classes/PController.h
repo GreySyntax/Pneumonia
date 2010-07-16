@@ -51,6 +51,7 @@
 - (IBAction)S1Next:(id)sender;
 
 //Step 3: Boot or Prepare Device
+- (void)runSet:(NSNumber *)arg;
 - (IBAction)S3BootDevice:(id)sender;
 - (IBAction)S3PrepareDevice:(id)sender;
 

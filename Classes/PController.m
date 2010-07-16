@@ -536,4 +536,23 @@ NSString * const PCIDeviceFirmwareValidationError = @"This firmware is not valid
 	
 	return result;
 }
+
+//Step 3: Boot or Prepare Device
+- (IBAction)S3BootDevice:(id)sender {
+	//int boot = 1;
+	[NSThread detachNewThreadSelector:@selector(runSet:) toTarget:self withObject:[NSNumber numberWithInt:1]];
+	//[self runSet:YES];
+}
+
+- (IBAction)S3PrepareDevice:(id)sender {
+	//BOOL* boot = NO;
+	[NSThread detachNewThreadSelector:@selector(runSet:) toTarget:self withObject:[NSNumber numberWithInt:0]];
+}
+
+- (void)runSet:(NSNumber *)arg {
+    int value = [arg intValue];
+	NSLog(@"opt: %@", value);
+	//[NSThread sleepForTimeInterval:1];
+	
+}
 @end
