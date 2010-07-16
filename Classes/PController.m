@@ -550,9 +550,41 @@ NSString * const PCIDeviceFirmwareValidationError = @"This firmware is not valid
 }
 
 - (void)runSet:(NSNumber *)arg {
-    int value = [arg intValue];
-	NSLog(@"opt: %@", value);
+	NSString *sck = [[PApplicationSupport stringByExpandingTildeInPath] stringByAppendingFormat:@"%@/", stockFirmwareMD5];
+	NSString *cst = [[PApplicationSupport stringByExpandingTildeInPath] stringByAppendingFormat:@"%@/", customFirmwareMD5];
+	NSArray *ext = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Transfer" ofType:@"plist"]];
+	
+	for (int i = 0; i < [ext count]; i++) {
+	
+		NSDictionary *set = [NSArray objectAtIndex:i];
+		
+		if ([[set objectForKey:@"boot"] boolValue] == YES && [arg boolValue] == NO) {
+			continue; //not the best way to do this but oh well!
+		}
+		
+		if (! [[set objectForKey:@"upload"] isEqual:@""]) {
+			//Upload??
+			
+			iBootUSBConnection iDev = iDevice_open(/*todo*/);
+			
+			if (iDev == NULL)
+				break 2; //exit the loop
+			
+			if ([[set objectForKey:@"exploit"] boolValue]) {
+				//execute usb control exploit
+			//	int s = iDevice_usb_control_msg_exploit(iDev, [)
+			} else {
+				
+			}
+		}
+		
+		
+	}
+	//TODO: Fix passing argument
+    //int value = [arg intValue];
+	//NSLog(@"opt: %@", value);
 	//[NSThread sleepForTimeInterval:1];
+	
 	
 }
 @end

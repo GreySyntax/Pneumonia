@@ -3,6 +3,7 @@
 struct iBootUSBConnection;
 typedef struct iBootUSBConnection *iBootUSBConnection;
 
+iBootUSBConnection iDevice_open(uint32_t productID);
 void iDevice_print(iBootUSBConnection connection);
 iBootUSBConnection iDevice_open(uint32_t productID);
 void iDevice_close(iBootUSBConnection connection);
