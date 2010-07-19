@@ -3,6 +3,10 @@
 <plist version="1.0">
 <array>
 	<dict>
+		<key>stock</key>
+		<true/>
+		<key>mode</key>
+		<integer>4737</integer>
 		<key>boot</key>
 		<false/>
 		<key>wait</key>
@@ -15,6 +19,10 @@
 		<string>iboot.payload</string>
 	</dict>
 	<dict>
+		<key>stock</key>
+		<false/>
+		<key>mode</key>
+		<string>0x1281</string>
 		<key>boot</key>
 		<false/>
 		<key>wait</key>
@@ -27,6 +35,10 @@
 		<string>ibec.40</string>
 	</dict>
 	<dict>
+		<key>stock</key>
+		<false/>
+		<key>mode</key>
+		<integer>4647</integer>
 		<key>boot</key>
 		<false/>
 		<key>wait</key>
@@ -39,6 +51,10 @@
 		<string>devtree.40</string>
 	</dict>
 	<dict>
+		<key>stock</key>
+		<false/>
+		<key>mode</key>
+		<integer>4647</integer>
 		<key>boot</key>
 		<true/>
 		<key>wait</key>

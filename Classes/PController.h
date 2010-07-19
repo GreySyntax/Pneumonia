@@ -42,7 +42,9 @@
 	//Step 3: Boot or Prepare Device
 	IBOutlet NSButton *S3Boot;
 	IBOutlet NSButton *S3Prep;
+	BOOL bootDevice;
 }
+
 - (BOOL)isError:(NSString *)theString;
 
 //Step 1: Firmware Select.
@@ -51,7 +53,7 @@
 - (IBAction)S1Next:(id)sender;
 
 //Step 3: Boot or Prepare Device
-- (void)runSet:(NSNumber *)arg;
+- (void)runSet;
 - (IBAction)S3BootDevice:(id)sender;
 - (IBAction)S3PrepareDevice:(id)sender;
 

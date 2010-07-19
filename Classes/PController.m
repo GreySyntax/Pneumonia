@@ -539,52 +539,81 @@ NSString * const PCIDeviceFirmwareValidationError = @"This firmware is not valid
 
 //Step 3: Boot or Prepare Device
 - (IBAction)S3BootDevice:(id)sender {
-	//int boot = 1;
-	[NSThread detachNewThreadSelector:@selector(runSet:) toTarget:self withObject:[NSNumber numberWithInt:1]];
-	//[self runSet:YES];
+	
+	bootDevice = YES;
+	[NSThread detachNewThreadSelector:@selector(runSet) toTarget:self withObject:nil];
 }
 
 - (IBAction)S3PrepareDevice:(id)sender {
-	//BOOL* boot = NO;
-	[NSThread detachNewThreadSelector:@selector(runSet:) toTarget:self withObject:[NSNumber numberWithInt:0]];
+	
+	bootDevice = NO;
+	[NSThread detachNewThreadSelector:@selector(runSet) toTarget:self withObject:nil];
 }
 
-- (void)runSet:(NSNumber *)arg {
-	NSString *sck = [[PApplicationSupport stringByExpandingTildeInPath] stringByAppendingFormat:@"%@/", stockFirmwareMD5];
-	NSString *cst = [[PApplicationSupport stringByExpandingTildeInPath] stringByAppendingFormat:@"%@/", customFirmwareMD5];
+- (void)runSet {
+	NSString *sck = [[PApplicationSupport stringByExpandingTildeInPath] stringByAppendingPathComponent:stockFirmwareMD5];
+	NSString *cst = [[PApplicationSupport stringByExpandingTildeInPath] stringByAppendingPathComponent:customFirmwareMD5];
 	NSArray *ext = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Transfer" ofType:@"plist"]];
+	BOOL usbError = NO;
 	
+	iBootUSBConnection iDev = NULL;
+	int mode = 0;
 	for (int i = 0; i < [ext count]; i++) {
 	
-		NSDictionary *set = [NSArray objectAtIndex:i];
+		NSDictionary *set = [ext objectAtIndex:i];
+		int status = 0;
 		
-		if ([[set objectForKey:@"boot"] boolValue] == YES && [arg boolValue] == NO) {
+		if ([[set objectForKey:@"boot"] boolValue] == YES && !bootDevice) {
 			continue; //not the best way to do this but oh well!
 		}
 		
+		if (mode != [[set objectForKey:@"mode"] intValue]) {
+			
+			iDevice_close(iDev);
+			iDev = NULL;
+		}
+		
+		if (iDev == NULL && ![[set objectForKey:@"mode"] isEqual:@""] && (iDev = iDevice_open([[set objectForKey:@"mode"] intValue])) == NULL) {
+			
+			usbError = YES;
+			break;
+		}
+		
+		mode = [[set objectForKey:@"mode"] intValue];
+		
 		if (! [[set objectForKey:@"upload"] isEqual:@""]) {
-			//Upload??
 			
-			iBootUSBConnection iDev = iDevice_open(/*todo*/);
+			NSString *path;
+			if ([[set objectForKey:@"stock"] boolValue])
+				path = [sck stringByAppendingPathComponent:[set objectForKey:@"upload"]];
+			else
+				path = [cst stringByAppendingPathComponent:[set objectForKey:@"upload"]];
+
+			if ([[set objectForKey:@"exploit"] boolValue])
+				status = iDevice_usb_control_msg_exploit(iDev, [path UTF8String]);
+			else
+				status = iDevice_send_file(iDev, [path UTF8String]);
 			
-			if (iDev == NULL)
-				break 2; //exit the loop
+			//if (status == -1) { 
+			//	//error
+			//	usbError = YES;
+			//	break;
+			//}
+		}
+		
+		if (! [[set objectForKey:@"command"] isEqual:@""]) {
+			status = iDevice_send_command(iDev, [[set objectForKey:@"command"] UTF8String]);
 			
-			if ([[set objectForKey:@"exploit"] boolValue]) {
-				//execute usb control exploit
-			//	int s = iDevice_usb_control_msg_exploit(iDev, [)
-			} else {
-				
+			if (status == -1) {
+				usbError = YES;
+				break;
 			}
 		}
 		
-		
+		if ([[set objectForKey:@"wait"] intValue] > 0) {
+			[NSThread sleepForTimeInterval:[[set objectForKey:@"wait"] intValue]];
+		}
 	}
-	//TODO: Fix passing argument
-    //int value = [arg intValue];
-	//NSLog(@"opt: %@", value);
-	//[NSThread sleepForTimeInterval:1];
-	
 	
 }
 @end

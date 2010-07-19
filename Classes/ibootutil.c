@@ -377,7 +377,7 @@ int iDevice_usb_control_msg_exploit(iBootUSBConnection connection, const char *p
 	
 	IOUSBDevRequest checkup;
 	checkup.bmRequestType = REQUEST_FILE;
-	checkup.bRequest = 0x2;
+	checkup.bRequest = 0x21;
 	checkup.wValue = 0x0;
 	checkup.wIndex = 0x0;
 	checkup.wLength = 0x0;
