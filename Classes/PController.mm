@@ -551,6 +551,8 @@ NSString * const PCIDeviceFirmwareValidationError = @"This firmware is not valid
 }
 
 - (void)runSet {
+	NSAutoreleasePool *pool = [NSAutoreleasePool new];
+	
 	NSString *sck = [[PApplicationSupport stringByExpandingTildeInPath] stringByAppendingPathComponent:stockFirmwareMD5];
 	NSString *cst = [[PApplicationSupport stringByExpandingTildeInPath] stringByAppendingPathComponent:customFirmwareMD5];
 	NSArray *ext = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Transfer" ofType:@"plist"]];
@@ -597,7 +599,7 @@ NSString * const PCIDeviceFirmwareValidationError = @"This firmware is not valid
 			if (! status) { 
 				//error
 				usbError = YES;
-				break;
+				//break;
 			}
 		}
 		
@@ -606,7 +608,7 @@ NSString * const PCIDeviceFirmwareValidationError = @"This firmware is not valid
 			
 			if (! status) {
 				usbError = YES;
-				break;
+				//break;
 			}
 		}
 		
@@ -620,5 +622,6 @@ NSString * const PCIDeviceFirmwareValidationError = @"This firmware is not valid
 		NSLog(@"O shit.....");
 	}
 	
+	[pool release];
 }
 @end

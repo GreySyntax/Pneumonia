@@ -141,18 +141,72 @@ void USBDevice::Reset() {
  */
 bool USBDevice::SendBuffer(char* buffer, int index, int length) {
 
-	int packets, last, pos = (length - index);
-
-	packets = pos % 0x800;
-	last = pos % 0x800;
-
-	if (pos % 0x800) packets++;
-	if (! last) last = 0x800;
-
-	unsigned int sent;
+	int packets = length / 0x800;
+	
+	if(length % 0x800)
+		packets++;
+	
+	int last = length % 0x800;
+	
+	if(!last)
+		last = 0x800;
+	
+	int i = 0;
+	unsigned int sizesent=0;
+	
 	char response[6];
 
-	for (int i = 0; i < packets; i++) {
+	for(i = 0; i < packets; i++) {
+		
+		int size = i + 1 < packets ? 0x800 : last;
+		
+		sizesent+=size;
+		printf("[Device] Sending packet %d of %d (0x%08x of 0x%08x bytes)\r\n", i+1, packets, sizesent, length);
+		
+		if(! libusb_control_transfer(device, 0x21, 1, i, 0, (unsigned char*)&buffer[i * 0x800], size, 1000)) {
+			
+			printf("[Device] Error sending packet.\r\n");
+			return -1;
+			
+		}
+		
+		if( libusb_control_transfer(device, 0xA1, 3, 0, 0, (unsigned char*)response, 6, 1000) != 6) {
+			
+			printf("[Device] Error receiving status while uploading file.\r\n");
+			return -1;
+			
+		}
+		
+		if(response[4] != 5) {
+			
+			printf("[Device] Invalid status error during file upload.\r\n");
+			return -1;
+		}
+		
+		printf("[Device] Upload successfull.\r\n");
+	}
+	
+	printf("[Device] Executing file.\r\n");
+	
+	libusb_control_transfer(device, 0x21, 1, i, 0, (unsigned char*)buffer, 0, 1000);
+	
+	for(i = 6; i <= 8; i++) {
+		
+		if(libusb_control_transfer(device, 0xA1, 3, 0, 0, (unsigned char*)response, 6, 1000) != 6) {
+			
+			printf("[Device] Error receiving execution status.\r\n");
+			return -1;
+		}
+		
+		if(response[4] != i) {
+			
+			printf("[Device] Invalid execution status.\r\n");
+			return -1;
+		}
+	}
+	
+	/*
+	 for (int i = 0; i < packets; i++) {
 
 		int len = last;
 
@@ -199,7 +253,7 @@ bool USBDevice::SendBuffer(char* buffer, int index, int length) {
 			continue;
 		}
 		return false;
-	}
+	}*/
 
 	cout << "[Info] Successfully transfered buffer" << endl;
 	return true;
