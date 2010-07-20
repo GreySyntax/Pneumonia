@@ -1,8 +1,14 @@
-Mac incationation of iBooty / Payload Pwner (ih8sn0wforums.com).
+Mac incationation of iBooty / Payload Pwner
+-------------------------------------------------------
+Copyright (C) NSPwn.com
 
-TODO:
-Extract required files, when their not found then:
-- Patch using bspatch and iH8sn0ws files from Payload Pwner
+Author:
+	GreySyntax
+	Mr. Gecko
 
-USB Support:
-- Hopefully iBoot util ;)
+Requirments:
+	3.1.2 shsh's for your device
+	libusb-1.0
+
+
+	
