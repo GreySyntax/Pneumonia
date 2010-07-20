@@ -8,7 +8,7 @@
 
 #import "PController.h"
 #import "PAddons.h"
-#import "ibootutil.h"
+#import "USBDevice.h"
 
 NSString * const PExtract = @"extract";
 NSString * const PApplicationSupport = @"~/Library/Application Support/Pneumonia/";
@@ -555,13 +555,14 @@ NSString * const PCIDeviceFirmwareValidationError = @"This firmware is not valid
 	NSString *cst = [[PApplicationSupport stringByExpandingTildeInPath] stringByAppendingPathComponent:customFirmwareMD5];
 	NSArray *ext = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Transfer" ofType:@"plist"]];
 	BOOL usbError = NO;
-	
-	iBootUSBConnection iDev = NULL;
+
+	//iBootUSBConnection iDev = NULL;
+	//USBDevice usbDevice;
 	int mode = 0;
 	for (int i = 0; i < [ext count]; i++) {
 	
 		NSDictionary *set = [ext objectAtIndex:i];
-		int status = 0;
+		BOOL status = 0;
 		
 		if ([[set objectForKey:@"boot"] boolValue] == YES && !bootDevice) {
 			continue; //not the best way to do this but oh well!
@@ -569,11 +570,10 @@ NSString * const PCIDeviceFirmwareValidationError = @"This firmware is not valid
 		
 		if (mode != [[set objectForKey:@"mode"] intValue]) {
 			
-			iDevice_close(iDev);
-			iDev = NULL;
+			usbDevice.Disconnect();
 		}
 		
-		if (iDev == NULL && ![[set objectForKey:@"mode"] isEqual:@""] && (iDev = iDevice_open([[set objectForKey:@"mode"] intValue])) == NULL) {
+		if (! usbDevice.IsConnected() && ![[set objectForKey:@"mode"] isEqual:@""] && !usbDevice.Connect()) {
 			
 			usbError = YES;
 			break;
@@ -590,21 +590,21 @@ NSString * const PCIDeviceFirmwareValidationError = @"This firmware is not valid
 				path = [cst stringByAppendingPathComponent:[set objectForKey:@"upload"]];
 
 			if ([[set objectForKey:@"exploit"] boolValue])
-				status = iDevice_usb_control_msg_exploit(iDev, [path UTF8String]);
+				status = usbDevice.Exploit([path UTF8String]);
 			else
-				status = iDevice_send_file(iDev, [path UTF8String]);
+				status = usbDevice.Upload([path UTF8String]);
 			
-			//if (status == -1) { 
-			//	//error
-			//	usbError = YES;
-			//	break;
-			//}
+			if (! status) { 
+				//error
+				usbError = YES;
+				break;
+			}
 		}
 		
 		if (! [[set objectForKey:@"command"] isEqual:@""]) {
-			status = iDevice_send_command(iDev, [[set objectForKey:@"command"] UTF8String]);
+			status = usbDevice.SendCommand([[set objectForKey:@"command"] UTF8String]);
 			
-			if (status == -1) {
+			if (! status) {
 				usbError = YES;
 				break;
 			}
@@ -613,6 +613,11 @@ NSString * const PCIDeviceFirmwareValidationError = @"This firmware is not valid
 		if ([[set objectForKey:@"wait"] intValue] > 0) {
 			[NSThread sleepForTimeInterval:[[set objectForKey:@"wait"] intValue]];
 		}
+	}
+	
+	if (usbError) {
+		
+		NSLog(@"O shit.....");
 	}
 	
 }

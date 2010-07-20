@@ -8,13 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		173767C011EF9397009B35B9 /* Transfer.plist in Resources */ = {isa = PBXBuildFile; fileRef = 173767BF11EF9397009B35B9 /* Transfer.plist */; };
+		17DC221711F6139600C543E3 /* USBDevice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17DC221511F6139600C543E3 /* USBDevice.cpp */; };
 		2A06FBF811EBB2B0006D924A /* iPhone2,1 in Resources */ = {isa = PBXBuildFile; fileRef = 2A06FBE611EBB2B0006D924A /* iPhone2,1 */; };
 		2A06FBF911EBB2B0006D924A /* iPod2,1 in Resources */ = {isa = PBXBuildFile; fileRef = 2A06FBEC11EBB2B0006D924A /* iPod2,1 */; };
 		2A06FBFA11EBB2B0006D924A /* iPod3,1 in Resources */ = {isa = PBXBuildFile; fileRef = 2A06FBF211EBB2B0006D924A /* iPod3,1 */; };
-		2A06FD1A11EBEB97006D924A /* ibootutil.c in Sources */ = {isa = PBXBuildFile; fileRef = 2A06FD1811EBEB96006D924A /* ibootutil.c */; };
-		2A06FD2011EBEBC7006D924A /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A06FD1F11EBEBC7006D924A /* IOKit.framework */; };
 		2A45670411E7CFA70087C752 /* PAddons.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A45670111E7CFA70087C752 /* PAddons.m */; };
-		2A45670511E7CFA70087C752 /* PController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A45670311E7CFA70087C752 /* PController.m */; };
+		2A45670511E7CFA70087C752 /* PController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2A45670311E7CFA70087C752 /* PController.mm */; };
 		2A45670E11E7CFBD0087C752 /* Devices.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2A45670711E7CFBD0087C752 /* Devices.plist */; };
 		2A45670F11E7CFBD0087C752 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2A45670811E7CFBD0087C752 /* InfoPlist.strings */; };
 		2A45671011E7CFBD0087C752 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A45670A11E7CFBD0087C752 /* MainMenu.xib */; };
@@ -31,6 +30,8 @@
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 		173767BF11EF9397009B35B9 /* Transfer.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Transfer.plist; sourceTree = "<group>"; };
+		17DC221511F6139600C543E3 /* USBDevice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = USBDevice.cpp; sourceTree = "<group>"; };
+		17DC221611F6139600C543E3 /* USBDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = USBDevice.h; sourceTree = "<group>"; };
 		256AC3F00F4B6AF500CF3369 /* Pneumonia_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pneumonia_Prefix.pch; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
@@ -38,13 +39,10 @@
 		2A06FBE611EBB2B0006D924A /* iPhone2,1 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "iPhone2,1"; sourceTree = "<group>"; };
 		2A06FBEC11EBB2B0006D924A /* iPod2,1 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "iPod2,1"; sourceTree = "<group>"; };
 		2A06FBF211EBB2B0006D924A /* iPod3,1 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "iPod3,1"; sourceTree = "<group>"; };
-		2A06FD1811EBEB96006D924A /* ibootutil.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ibootutil.c; sourceTree = "<group>"; };
-		2A06FD1911EBEB97006D924A /* ibootutil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ibootutil.h; sourceTree = "<group>"; };
-		2A06FD1F11EBEBC7006D924A /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		2A45670011E7CFA70087C752 /* PAddons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAddons.h; sourceTree = "<group>"; };
 		2A45670111E7CFA70087C752 /* PAddons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAddons.m; sourceTree = "<group>"; };
 		2A45670211E7CFA70087C752 /* PController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PController.h; sourceTree = "<group>"; };
-		2A45670311E7CFA70087C752 /* PController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PController.m; sourceTree = "<group>"; };
+		2A45670311E7CFA70087C752 /* PController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PController.mm; sourceTree = "<group>"; };
 		2A45670711E7CFBD0087C752 /* Devices.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Devices.plist; sourceTree = "<group>"; };
 		2A45670911E7CFBD0087C752 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2A45670B11E7CFBD0087C752 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -64,7 +62,6 @@
 			files = (
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				2A9AF86911E6E628003A0174 /* libcrypto.dylib in Frameworks */,
-				2A06FD2011EBEBC7006D924A /* IOKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,7 +73,6 @@
 			children = (
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
 				2A9AF86811E6E628003A0174 /* libcrypto.dylib */,
-				2A06FD1F11EBEBC7006D924A /* IOKit.framework */,
 			);
 			name = "Linked Frameworks";
 			sourceTree = "<group>";
@@ -132,12 +128,12 @@
 		2A4566FF11E7CFA70087C752 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				17DC221511F6139600C543E3 /* USBDevice.cpp */,
+				17DC221611F6139600C543E3 /* USBDevice.h */,
 				2A45670011E7CFA70087C752 /* PAddons.h */,
 				2A45670111E7CFA70087C752 /* PAddons.m */,
 				2A45670211E7CFA70087C752 /* PController.h */,
-				2A45670311E7CFA70087C752 /* PController.m */,
-				2A06FD1811EBEB96006D924A /* ibootutil.c */,
-				2A06FD1911EBEB97006D924A /* ibootutil.h */,
+				2A45670311E7CFA70087C752 /* PController.mm */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -230,8 +226,8 @@
 			files = (
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				2A45670411E7CFA70087C752 /* PAddons.m in Sources */,
-				2A45670511E7CFA70087C752 /* PController.m in Sources */,
-				2A06FD1A11EBEB97006D924A /* ibootutil.c in Sources */,
+				2A45670511E7CFA70087C752 /* PController.mm in Sources */,
+				17DC221711F6139600C543E3 /* USBDevice.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,7 +302,10 @@
 				GCC_VERSION = 4.0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "/usr/local/include/**";
+				LIBRARY_SEARCH_PATHS = "/usr/local/lib/**";
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-lusb-1.0";
 				PREBINDING = NO;
 				SDKROOT = macosx10.4;
 				"SDKROOT[arch=x86_64]" = macosx10.5;

@@ -22,7 +22,7 @@
 		<key>stock</key>
 		<false/>
 		<key>mode</key>
-		<string>0x1281</string>
+		<integer>4737</integer>
 		<key>boot</key>
 		<false/>
 		<key>wait</key>
@@ -32,7 +32,7 @@
 		<key>exploit</key>
 		<false/>
 		<key>upload</key>
-		<string>ibec.40</string>
+		<string>ibec</string>
 	</dict>
 	<dict>
 		<key>stock</key>
@@ -48,7 +48,7 @@
 		<key>exploit</key>
 		<false/>
 		<key>upload</key>
-		<string>devtree.40</string>
+		<string>devicetree</string>
 	</dict>
 	<dict>
 		<key>stock</key>
@@ -64,7 +64,7 @@
 		<key>exploit</key>
 		<false/>
 		<key>upload</key>
-		<string>kernel.40</string>
+		<string>kernel</string>
 	</dict>
 </array>
 </plist>

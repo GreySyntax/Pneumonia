@@ -7,8 +7,11 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "USBDevice.h"
 
 @interface PController : NSObject {
+	
+	USBDevice usbDevice;
     IBOutlet NSWindow *mainWindow;
 	NSDictionary *devicesDic;
 	NSDictionary *deviceDic;
