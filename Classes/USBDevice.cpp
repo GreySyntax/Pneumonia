@@ -25,7 +25,7 @@ using namespace std;
  */
 USBDevice::USBDevice() {
 
-	libusb_init(NULL);
+	//stub
 }
 
 /***
@@ -54,6 +54,11 @@ bool USBDevice::AutoBoot() {
  */
 bool USBDevice::Connect() {
 
+	if (device != NULL)
+		Disconnect();
+	
+	libusb_init(NULL);
+	
 	if ((device = libusb_open_device_with_vid_pid(NULL, VENDOR_ID, RECV_MODE)) == NULL) {
 		if ((device = libusb_open_device_with_vid_pid(NULL, VENDOR_ID, WTF_MODE)) == NULL) {
 			if ((device = libusb_open_device_with_vid_pid(NULL, VENDOR_ID, DFU_MODE)) == NULL) {
