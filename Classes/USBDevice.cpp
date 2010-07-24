@@ -93,9 +93,10 @@ void USBDevice::Disconnect() {
 
 	if (device != NULL) {
 		cout << "\r\n[Info] Closing USB Connection." << endl;
-		libusb_release_interface(device, 0);
-		libusb_release_interface(device, 1);
+		//libusb_release_interface(device, 0);
+		//libusb_release_interface(device, 1);
 		libusb_close(device);
+		device = NULL;
 	}
 }
 
