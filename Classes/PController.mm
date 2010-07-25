@@ -299,7 +299,7 @@ NSString * const PCIDeviceFirmwareValidationError = @"This firmware is not valid
 			[theAlert addButtonWithTitle:@"Quit"];
 			[theAlert setMessageText:@"Error"];
 			[theAlert setInformativeText:[NSString stringWithFormat:@"Firmware %@ was unable to be extracted", [stockFirmwareDic objectForKey:PBFVersion]]];
-			[theAlert setAlertStyle:2];
+			[theAlert setAlertStyle:NSWarningAlertStyle];
 			[theAlert runModal];
 			if ([manager fileExistsAtPath:extract]) {
 				if ([manager respondsToSelector:@selector(removeFileAtPath:handler:)]) {
@@ -413,7 +413,7 @@ NSString * const PCIDeviceFirmwareValidationError = @"This firmware is not valid
 			[theAlert addButtonWithTitle:@"Quit"];
 			[theAlert setMessageText:@"Error"];
 			[theAlert setInformativeText:[NSString stringWithFormat:@"Firmware %@ was unable to be extracted", [customFirmwareDic objectForKey:PBFVersion]]];
-			[theAlert setAlertStyle:2];
+			[theAlert setAlertStyle:NSWarningAlertStyle];
 			[theAlert runModal];
 			if ([manager fileExistsAtPath:extract]) {
 				if ([manager respondsToSelector:@selector(removeFileAtPath:handler:)]) {

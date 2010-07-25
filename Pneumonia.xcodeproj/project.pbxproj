@@ -328,6 +328,9 @@
 				GCC_VERSION = 4.0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "/usr/local/include/**";
+				LIBRARY_SEARCH_PATHS = "/usr/local/lib/**";
+				OTHER_LDFLAGS = "-lusb-1.0";
 				PREBINDING = NO;
 				SDKROOT = macosx10.4;
 				"SDKROOT[arch=x86_64]" = macosx10.5;
