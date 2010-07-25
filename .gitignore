@@ -3,3 +3,5 @@
 /Pneumonia.xcodeproj/*.pbxuser
 /Pneumonia.xcodeproj/*.mode*
 /Pneumonia.xcodeproj/*.perspective*
+/Pneumonia.xcodeproj/xcuserdata
+/Pneumonia.xcodeproj/project.xcworkspace/xcuserdata

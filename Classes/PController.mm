@@ -28,6 +28,13 @@ NSString * const PBKey = @"key";
 NSString * const PBTarget = @"target";
 NSString * const PBPath = @"path";
 NSString * const PBEncrypt = @"encrypt";
+NSString * const PBTransfer = @"transfer";
+NSString * const PBMode = @"mode";
+NSString * const PBFile = @"file";
+NSString * const PBLocation = @"location";
+NSString * const PBExploit = @"exploit";
+NSString * const PBCommand = @"command";
+NSString * const PBSleep = @"sleep";
 
 //Choose Info
 NSString * const PCISender = @"sender";
@@ -266,8 +273,8 @@ NSString * const PCIDeviceFirmwareValidationError = @"This firmware is not valid
 	}
 }
 - (IBAction)S1Next:(id)sender {
-	[stepsView selectTabViewItem:[stepsView tabViewItemAtIndex:1]];
 	[S2Progress setDoubleValue:0.0];
+	[stepsView selectTabViewItem:[stepsView tabViewItemAtIndex:1]];
 	[S2Progress startAnimation:self];
 	[NSThread detachNewThreadSelector:@selector(extractAndPatch) toTarget:self withObject:nil];
 }
@@ -355,34 +362,6 @@ NSString * const PCIDeviceFirmwareValidationError = @"This firmware is not valid
 			}
 			
 			[S2Progress setDoubleValue:[S2Progress doubleValue]+increasement];
-		}
-		
-		//Copy the img3 files to the stash
-		NSString *b = [[NSBundle mainBundle] pathForResource:@"sn0w" ofType:@"img3"];
-		NSString *p = [[NSBundle mainBundle] pathForResource:@"wait" ofType:@"img3"];
-		
-		if ([manager fileExistsAtPath:b]) {
-			if ([manager respondsToSelector:@selector(copyPath:toPath:handler:)]) {
-				[manager copyPath:b
-						   toPath:[stockPath stringByAppendingPathComponent:@"sn0w.img3"]
-						  handler:nil];
-			} else {
-				[manager copyItemAtPath:b
-								 toPath:[stockPath stringByAppendingPathComponent:@"sn0w.img3"]
-								  error:nil];
-			}
-		}
-		
-		if ([manager fileExistsAtPath:p]) {
-			if ([manager respondsToSelector:@selector(copyPath:toPath:handler:)]) {
-				[manager copyPath:p
-						   toPath:[stockPath stringByAppendingPathComponent:@"wait.img3"]
-						  handler:nil];
-			} else {
-				[manager copyItemAtPath:p
-								 toPath:[stockPath stringByAppendingPathComponent:@"wait.img3"]
-								  error:nil];
-			}
 		}
 		
 		[S2Progress setDoubleValue:2.0];
@@ -512,9 +491,93 @@ NSString * const PCIDeviceFirmwareValidationError = @"This firmware is not valid
 	
 	[pool release];
 }
-
 - (void)S2Continue {
 	[stepsView selectTabViewItem:[stepsView tabViewItemAtIndex:2]];
+}
+
+//Step 3: Boot or Prepare Device
+- (IBAction)S3Boot:(id)sender {
+	[S3Progress setDoubleValue:0.0];
+    [S3Info setStringValue:[NSString stringWithFormat:@"Booting %@, please wait...", [deviceDic objectForKey:PBName]]];
+	[S3Progress startAnimation:self];
+	[stepsView selectTabViewItem:[stepsView tabViewItemAtIndex:3]];
+	[NSThread detachNewThreadSelector:@selector(S3Run:) toTarget:self withObject:@"boot"];
+}
+- (IBAction)S3Prepare:(id)sender {
+	[S3Progress setDoubleValue:0.0];
+    [S3Info setStringValue:[NSString stringWithFormat:@"Preparing %@ for restore, please wait...", [deviceDic objectForKey:PBName]]];
+	[S3Progress startAnimation:self];
+	[stepsView selectTabViewItem:[stepsView tabViewItemAtIndex:3]];
+	[NSThread detachNewThreadSelector:@selector(S3Run:) toTarget:self withObject:@"prepare"];
+}
+- (void)S3Run:(NSString *)theSet {
+	NSAutoreleasePool *pool = [NSAutoreleasePool new];
+	
+	NSString *stockPath = [[PApplicationSupport stringByExpandingTildeInPath] stringByAppendingPathComponent:stockFirmwareMD5];
+	NSString *customPath = [[PApplicationSupport stringByExpandingTildeInPath] stringByAppendingPathComponent:customFirmwareMD5];
+	NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
+	NSArray *set = [[[stockFirmwareDic objectForKey:PBTransfer] objectForKey:[customFirmwareDic objectForKey:PBID]] objectForKey:theSet];
+	
+	//iBootUSBConnection iDev = NULL;
+	//USBDevice usbDevice;
+    [S3Progress setMaxValue:(([set count]-1)*2)+1];
+    S3ProgressCount = -1;
+	int mode = 0;
+	for (int i=0; i<[set count]; i++) {
+		NSDictionary *item = [set objectAtIndex:i];
+		BOOL status = 0;
+		
+		if (mode!=[[item objectForKey:PBMode] intValue]) {
+			usbDevice.Disconnect();
+		}
+		mode = [[item objectForKey:PBMode] intValue];
+		
+		if (!usbDevice.IsConnected() && mode!=0 && !usbDevice.Connect()) {
+			NSLog(@"Unable to connect to iDevice");
+			break;
+		}
+		
+        S3ProgressCount++;
+        [S3Progress setDoubleValue:S3ProgressCount];
+		if (![[item objectForKey:PBFile] isEqual:@""]) {
+            [S3Status setStringValue:[NSString stringWithFormat:@"Sending %@", [item objectForKey:PBFile]]];
+			NSString *path = [resourcePath stringByAppendingPathComponent:[item objectForKey:PBFile]];
+			if ([[item objectForKey:PBLocation] isEqual:PBStock]) {
+                path = [stockPath stringByAppendingPathComponent:[item objectForKey:PBFile]];
+            } else if ([[item objectForKey:PBLocation] isEqual:PBCustom]) {
+                path = [customPath stringByAppendingPathComponent:[item objectForKey:PBFile]];
+            }
+            
+            NSLog(@"Sending %@", path);
+			if ([[item objectForKey:PBExploit] boolValue])
+				status = usbDevice.Exploit([path UTF8String]);
+			else
+				status = usbDevice.Upload([path UTF8String]);
+			if (!status) {
+				NSLog(@"While sending %@, we got the status %d", path, status);
+			}
+		}
+		
+        S3ProgressCount++;
+        [S3Progress setDoubleValue:S3ProgressCount];
+		if (![[item objectForKey:PBCommand] isEqual:@""]) {
+            [S3Status setStringValue:[NSString stringWithFormat:@"Running %@", [item objectForKey:PBCommand]]];
+			status = usbDevice.SendCommand([[item objectForKey:PBCommand] UTF8String]);
+			if (!status) {
+				NSLog(@"While running %@, we got the status %d", [item objectForKey:PBCommand], status);
+			}
+		}
+		
+		if ([[item objectForKey:PBSleep] intValue] > 0) {
+			[NSThread sleepForTimeInterval:[[item objectForKey:PBSleep] intValue]];
+		}
+	}
+	S3ProgressCount++;
+	[S3Progress setDoubleValue:S3ProgressCount];
+	[S3Status setStringValue:@"Done"];
+	[NSThread sleepUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.5]];
+	[self performSelectorOnMainThread:@selector(S2Continue) withObject:nil waitUntilDone:NO];
+	[pool release];
 }
 
 //Utilities
@@ -563,93 +626,5 @@ NSString * const PCIDeviceFirmwareValidationError = @"This firmware is not valid
 	[theTask release];
 	
 	return result;
-}
-
-//Step 3: Boot or Prepare Device
-- (IBAction)S3BootDevice:(id)sender {
-	
-	bootDevice = YES;
-	[NSThread detachNewThreadSelector:@selector(runSet) toTarget:self withObject:nil];
-}
-
-- (IBAction)S3PrepareDevice:(id)sender {
-	
-	bootDevice = NO;
-	[NSThread detachNewThreadSelector:@selector(runSet) toTarget:self withObject:nil];
-}
-
-- (void)runSet {
-	NSAutoreleasePool *pool = [NSAutoreleasePool new];
-	
-	NSString *sck = [[PApplicationSupport stringByExpandingTildeInPath] stringByAppendingPathComponent:stockFirmwareMD5];
-	NSString *cst = [[PApplicationSupport stringByExpandingTildeInPath] stringByAppendingPathComponent:customFirmwareMD5];
-	NSArray *ext = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Transfer" ofType:@"plist"]];
-	BOOL usbError = NO;
-
-	//iBootUSBConnection iDev = NULL;
-	//USBDevice usbDevice;
-	int mode = 0;
-	for (int i = 0; i < [ext count]; i++) {
-	
-		NSDictionary *set = [ext objectAtIndex:i];
-		BOOL status = 0;
-		
-		if ([[set objectForKey:@"boot"] boolValue] == YES && !bootDevice) {
-			continue; //not the best way to do this but oh well!
-		}
-		
-		if (mode != [[set objectForKey:@"mode"] intValue]) {
-			
-			usbDevice.Disconnect();
-		}
-		
-		if (! usbDevice.IsConnected() && ![[set objectForKey:@"mode"] isEqual:@""] && !usbDevice.Connect()) {
-			
-			usbError = YES;
-			break;
-		}
-		
-		mode = [[set objectForKey:@"mode"] intValue];
-		
-		if (! [[set objectForKey:@"upload"] isEqual:@""]) {
-			
-			NSString *path;
-			if ([[set objectForKey:@"stock"] boolValue])
-				path = [sck stringByAppendingPathComponent:[set objectForKey:@"upload"]];
-			else
-				path = [cst stringByAppendingPathComponent:[set objectForKey:@"upload"]];
-
-			if ([[set objectForKey:@"exploit"] boolValue])
-				status = usbDevice.Exploit([path UTF8String]);
-			else
-				status = usbDevice.Upload([path UTF8String]);
-			
-			if (! status) { 
-				//error
-				usbError = YES;
-				//break;
-			}
-		}
-		
-		if (! [[set objectForKey:@"command"] isEqual:@""]) {
-			status = usbDevice.SendCommand([[set objectForKey:@"command"] UTF8String]);
-			
-			if (! status) {
-				usbError = YES;
-				//break;
-			}
-		}
-		
-		if ([[set objectForKey:@"wait"] intValue] > 0) {
-			[NSThread sleepForTimeInterval:[[set objectForKey:@"wait"] intValue]];
-		}
-	}
-	
-	if (usbError) {
-		
-		NSLog(@"O shit.....");
-	}
-	
-	[pool release];
 }
 @end

@@ -43,9 +43,10 @@
 	IBOutlet NSProgressIndicator *S2Progress;
 	
 	//Step 3: Boot or Prepare Device
-	IBOutlet NSButton *S3Boot;
-	IBOutlet NSButton *S3Prep;
-	BOOL bootDevice;
+	IBOutlet NSTextField *S3Info;
+	IBOutlet NSTextField *S3Status;
+	IBOutlet NSProgressIndicator *S3Progress;
+    double S3ProgressCount;
 }
 
 - (BOOL)isError:(NSString *)theString;
@@ -56,9 +57,9 @@
 - (IBAction)S1Next:(id)sender;
 
 //Step 3: Boot or Prepare Device
-- (void)runSet;
-- (IBAction)S3BootDevice:(id)sender;
-- (IBAction)S3PrepareDevice:(id)sender;
+- (IBAction)S3Boot:(id)sender;
+- (IBAction)S3Prepare:(id)sender;
+- (void)S3Run:(NSString *)theSet;
 
 //Utilities
 - (BOOL)unzip:(NSString *)path toPath:(NSString *)toPath;
