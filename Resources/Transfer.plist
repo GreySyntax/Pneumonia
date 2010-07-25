@@ -52,6 +52,54 @@
 	</dict>
 	<dict>
 		<key>stock</key>
+		<true/>
+		<key>mode</key>
+		<integer>4647</integer>
+		<key>boot</key>
+		<false/>
+		<key>wait</key>
+		<integer>0</integer>
+		<key>command</key>
+		<string>setpicture 0</string>
+		<key>exploit</key>
+		<false/>
+		<key>upload</key>
+		<string>wait.img3</string>
+	</dict>
+	<dict>
+		<key>stock</key>
+		<true/>
+		<key>mode</key>
+		<integer>4647</integer>
+		<key>boot</key>
+		<true/>
+		<key>wait</key>
+		<integer>0</integer>
+		<key>command</key>
+		<string>setpicture 0</string>
+		<key>exploit</key>
+		<false/>
+		<key>upload</key>
+		<string>sn0w.img3</string>
+	</dict>
+	<dict>
+		<key>stock</key>
+		<false/>
+		<key>mode</key>
+		<integer>4647</integer>
+		<key>boot</key>
+		<false/>
+		<key>wait</key>
+		<integer>0</integer>
+		<key>command</key>
+		<string>bgcolor 1 1 1</string>
+		<key>exploit</key>
+		<false/>
+		<key>upload</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>stock</key>
 		<false/>
 		<key>mode</key>
 		<integer>4647</integer>

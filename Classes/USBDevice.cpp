@@ -290,7 +290,7 @@ bool USBDevice::SendCommand(const char* command) {
 		cout << response << endl;
 	}
 
-	//cout << "[Info] Sent " << command << " to device" << endl;
+	cout << "[Info] Sent " << command << " to device" << endl;
 	return true;
 }
 

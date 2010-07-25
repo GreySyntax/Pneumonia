@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1708A75911FBB55B00350B4C /* sn0w.img3 in Resources */ = {isa = PBXBuildFile; fileRef = 1708A75811FBB55B00350B4C /* sn0w.img3 */; };
+		1708A75B11FBB56300350B4C /* wait.img3 in Resources */ = {isa = PBXBuildFile; fileRef = 1708A75A11FBB56300350B4C /* wait.img3 */; };
 		173767C011EF9397009B35B9 /* Transfer.plist in Resources */ = {isa = PBXBuildFile; fileRef = 173767BF11EF9397009B35B9 /* Transfer.plist */; };
 		17DC221711F6139600C543E3 /* USBDevice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 17DC221511F6139600C543E3 /* USBDevice.cpp */; };
 		2A06FBF811EBB2B0006D924A /* iPhone2,1 in Resources */ = {isa = PBXBuildFile; fileRef = 2A06FBE611EBB2B0006D924A /* iPhone2,1 */; };
@@ -29,6 +31,8 @@
 /* Begin PBXFileReference section */
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
+		1708A75811FBB55B00350B4C /* sn0w.img3 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sn0w.img3; sourceTree = "<group>"; };
+		1708A75A11FBB56300350B4C /* wait.img3 */ = {isa = PBXFileReference; lastKnownFileType = file; path = wait.img3; sourceTree = "<group>"; };
 		173767BF11EF9397009B35B9 /* Transfer.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Transfer.plist; sourceTree = "<group>"; };
 		17DC221511F6139600C543E3 /* USBDevice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = USBDevice.cpp; sourceTree = "<group>"; };
 		17DC221611F6139600C543E3 /* USBDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = USBDevice.h; sourceTree = "<group>"; };
@@ -141,9 +145,11 @@
 		2A45670611E7CFBD0087C752 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1708A75811FBB55B00350B4C /* sn0w.img3 */,
 				2A45671311E7CFCD0087C752 /* Pneumonia-Info.plist */,
 				2A45671411E7CFD20087C752 /* Pneumonia.icns */,
 				2A45670711E7CFBD0087C752 /* Devices.plist */,
+				1708A75A11FBB56300350B4C /* wait.img3 */,
 				2A45670811E7CFBD0087C752 /* InfoPlist.strings */,
 				2A45670A11E7CFBD0087C752 /* MainMenu.xib */,
 				2A45670C11E7CFBD0087C752 /* gray-apple-icon.png */,
@@ -214,6 +220,8 @@
 				2A06FBF911EBB2B0006D924A /* iPod2,1 in Resources */,
 				2A06FBFA11EBB2B0006D924A /* iPod3,1 in Resources */,
 				173767C011EF9397009B35B9 /* Transfer.plist in Resources */,
+				1708A75911FBB55B00350B4C /* sn0w.img3 in Resources */,
+				1708A75B11FBB56300350B4C /* wait.img3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

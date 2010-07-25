@@ -357,6 +357,34 @@ NSString * const PCIDeviceFirmwareValidationError = @"This firmware is not valid
 			[S2Progress setDoubleValue:[S2Progress doubleValue]+increasement];
 		}
 		
+		//Copy the img3 files to the stash
+		NSString *b = [[NSBundle mainBundle] pathForResource:@"sn0w" ofType:@"img3"];
+		NSString *p = [[NSBundle mainBundle] pathForResource:@"wait" ofType:@"img3"];
+		
+		if ([manager fileExistsAtPath:b]) {
+			if ([manager respondsToSelector:@selector(copyPath:toPath:handler:)]) {
+				[manager copyPath:b
+						   toPath:[stockPath stringByAppendingPathComponent:@"sn0w.img3"]
+						  handler:nil];
+			} else {
+				[manager copyItemAtPath:b
+								 toPath:[stockPath stringByAppendingPathComponent:@"sn0w.img3"]
+								  error:nil];
+			}
+		}
+		
+		if ([manager fileExistsAtPath:p]) {
+			if ([manager respondsToSelector:@selector(copyPath:toPath:handler:)]) {
+				[manager copyPath:p
+						   toPath:[stockPath stringByAppendingPathComponent:@"wait.img3"]
+						  handler:nil];
+			} else {
+				[manager copyItemAtPath:p
+								 toPath:[stockPath stringByAppendingPathComponent:@"wait.img3"]
+								  error:nil];
+			}
+		}
+		
 		[S2Progress setDoubleValue:2.0];
 		[S2Status setStringValue:[NSString stringWithFormat:@"Cleaning %@ Firmware", [stockFirmwareDic objectForKey:PBFVersion]]];
 		if ([manager fileExistsAtPath:extract]) {
