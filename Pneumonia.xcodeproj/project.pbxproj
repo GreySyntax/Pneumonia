@@ -24,24 +24,9 @@
 		2A45671511E7CFD20087C752 /* Pneumonia.icns in Resources */ = {isa = PBXBuildFile; fileRef = 2A45671411E7CFD20087C752 /* Pneumonia.icns */; };
 		2A45672511E7D2730087C752 /* xpwntool in Resources */ = {isa = PBXBuildFile; fileRef = 2A45672411E7D2730087C752 /* xpwntool */; };
 		2A9AF86911E6E628003A0174 /* libcrypto.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A9AF86811E6E628003A0174 /* libcrypto.dylib */; };
-		2AE942B611FC13F3004B6F2C /* libusb-1.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AE942B511FC13F3004B6F2C /* libusb-1.0.0.dylib */; };
-		2AE942B811FC1438004B6F2C /* libusb-1.0.0.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2AE942B511FC13F3004B6F2C /* libusb-1.0.0.dylib */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		2AE942B711FC1426004B6F2C /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				2AE942B811FC1438004B6F2C /* libusb-1.0.0.dylib in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
@@ -71,7 +56,6 @@
 		2A45671411E7CFD20087C752 /* Pneumonia.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Pneumonia.icns; sourceTree = SOURCE_ROOT; };
 		2A45672411E7D2730087C752 /* xpwntool */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = xpwntool; sourceTree = "<group>"; };
 		2A9AF86811E6E628003A0174 /* libcrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.dylib; path = usr/lib/libcrypto.dylib; sourceTree = SDKROOT; };
-		2AE942B511FC13F3004B6F2C /* libusb-1.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libusb-1.0.0.dylib"; path = "Frameworks/libusb-1.0.0.dylib"; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Pneumonia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pneumonia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -83,7 +67,6 @@
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				2A9AF86911E6E628003A0174 /* libcrypto.dylib in Frameworks */,
 				2A38627111FBE20E00A77A19 /* IOKit.framework in Frameworks */,
-				2AE942B611FC13F3004B6F2C /* libusb-1.0.0.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,7 +76,6 @@
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2AE942B511FC13F3004B6F2C /* libusb-1.0.0.dylib */,
 				2A38627011FBE20E00A77A19 /* IOKit.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
 				2A9AF86811E6E628003A0174 /* libcrypto.dylib */,
@@ -192,7 +174,6 @@
 				8D1107290486CEB800E47090 /* Resources */,
 				8D11072C0486CEB800E47090 /* Sources */,
 				8D11072E0486CEB800E47090 /* Frameworks */,
-				2AE942B711FC1426004B6F2C /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -302,10 +283,9 @@
 				INFOPLIST_FILE = "Resources/Pneumonia-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
 					"\"$(SRCROOT)/Frameworks\"",
+					"/usr/local/lib/**",
 				);
-				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = Pneumonia;
 			};
 			name = Debug;
@@ -325,10 +305,9 @@
 				INFOPLIST_FILE = "Resources/Pneumonia-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
 					"\"$(SRCROOT)/Frameworks\"",
+					"/usr/local/lib/**",
 				);
-				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = Pneumonia;
 			};
 			name = Release;
@@ -347,10 +326,13 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "/usr/local/include/**";
-				LIBRARY_SEARCH_PATHS = "/usr/local/lib/**";
+				LIBRARY_SEARCH_PATHS = (
+					"/usr/local/lib/**",
+					"\"$(SRCROOT)/Frameworks\"",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.4;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = "-lusb-1.0";
 				PREBINDING = NO;
 				SDKROOT = macosx10.5;
 			};
@@ -369,9 +351,12 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "/usr/local/include/**";
-				LIBRARY_SEARCH_PATHS = "/usr/local/lib/**";
+				LIBRARY_SEARCH_PATHS = (
+					"/usr/local/lib/**",
+					"\"$(SRCROOT)/Frameworks\"",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.4;
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = "-lusb-1.0";
 				PREBINDING = NO;
 				SDKROOT = macosx10.5;
 			};
